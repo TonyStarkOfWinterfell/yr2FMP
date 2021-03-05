@@ -17,11 +17,14 @@ public class ButtonScript : MonoBehaviour
     public Vector3 centre;
     public Vector3 size;
 
-  
+    
+
     public void Start()
     {
         loop = 0;
     }
+
+    
 
     public void OnMouseDown()
     {
@@ -30,6 +33,9 @@ public class ButtonScript : MonoBehaviour
 
     public void PushyButton()
     {
+        
+
+
         if (loop == 5)
         {
             SpawnObject();
