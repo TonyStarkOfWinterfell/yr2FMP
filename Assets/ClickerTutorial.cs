@@ -21,7 +21,8 @@ public class ClickerTutorial : MonoBehaviour
     public int productionUpgrade1Level;
 
     public void Start()
-    {       
+    {
+        coinsClickValue = 1;
         clickUpgrade1Cost = 10;
         productionUpgrade1Cost = 25;
     }
@@ -30,10 +31,10 @@ public class ClickerTutorial : MonoBehaviour
     {
         coinsPerSecond = productionUpgrade1Level;
 
-        coinsText.text = "Coins: " + coins;
-        coinsPerSecText.text = coinsPerSecond + " coins/s";
-        clickUpgrade1Text.text = "Click Upgrade 1\nCost " + clickUpgrade1Cost + " coins\nPower: =! Click\nLevel: " + clickUpgrade1Level;
-        productionUpgrade1Text.text = "Prouction Upgrade 1\nCost " + productionUpgrade1Cost + " coins\nPower: +1 coins/s\nLevel: " + productionUpgrade1Level;
+        coinsText.text = "Coins: " + coins.ToString("F0"); 
+        coinsPerSecText.text = coinsPerSecond.ToString("F0") + " coins/s";
+        clickUpgrade1Text.text = "Click Upgrade 1\nCost " + clickUpgrade1Cost.ToString("F0") + " coins\nPower: =! Click\nLevel: " + clickUpgrade1Level;
+        productionUpgrade1Text.text = "Prouction Upgrade 1\nCost " + productionUpgrade1Cost.ToString("F0") + " coins\nPower: +1 coins/s\nLevel: " + productionUpgrade1Level;
 
         coins += coinsPerSecond * Time.deltaTime;
     }
