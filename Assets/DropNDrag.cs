@@ -48,56 +48,86 @@ public class DropNDrag : MonoBehaviour
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
 
-        if(mouseButtonReleased && thisGameobjectName == "Red" && thisGameobjectName == collisionGameobjectName)
+        if(mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentObj--;
             buttonScript.buttonText.text = buttonScript.currentObj + "/6";
-            Instantiate(Resources.Load("Orange_Object"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
             //destroying obj then using it
            
         }
-        else if (mouseButtonReleased && thisGameobjectName == "Orange" && thisGameobjectName == collisionGameobjectName)
+        else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentObj--;
             buttonScript.buttonText.text = buttonScript.currentObj + "/6";
-            Instantiate(Resources.Load("Yellow_Object"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
             
         }
-        else if (mouseButtonReleased && thisGameobjectName == "Yellow" && thisGameobjectName == collisionGameobjectName)
+        else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentObj--;
             buttonScript.buttonText.text = buttonScript.currentObj + "/6";
-            Instantiate(Resources.Load("Green_Object"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
             
         }
-        else if (mouseButtonReleased && thisGameobjectName == "Green" && thisGameobjectName == collisionGameobjectName)
+        else if (mouseButtonReleased && thisGameobjectName == "4" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentObj--;
             buttonScript.buttonText.text = buttonScript.currentObj + "/6";
-            Instantiate(Resources.Load("Blue_Object"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
             
         }
-        else if (mouseButtonReleased && thisGameobjectName == "Blue" && thisGameobjectName == collisionGameobjectName)
+        else if (mouseButtonReleased && thisGameobjectName == "5" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentObj--;
             buttonScript.buttonText.text = buttonScript.currentObj + "/6";
-            Instantiate(Resources.Load("Purple_Object"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
             
+        }
+        else if (mouseButtonReleased && thisGameobjectName == "6" && thisGameobjectName == collisionGameobjectName)
+        {
+            buttonScript.currentObj--;
+            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+            mouseButtonReleased = false;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+
+        }
+        else if (mouseButtonReleased && thisGameobjectName == "7" && thisGameobjectName == collisionGameobjectName)
+        {
+            buttonScript.currentObj--;
+            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+            mouseButtonReleased = false;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+
+        }
+        else if (mouseButtonReleased && thisGameobjectName == "8" && thisGameobjectName == collisionGameobjectName)
+        {
+            buttonScript.currentObj--;
+            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            Instantiate(Resources.Load("9_Object"), transform.position, Quaternion.identity);
+            mouseButtonReleased = false;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+
         }
     }
 

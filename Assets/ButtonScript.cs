@@ -35,7 +35,7 @@ public class ButtonScript : MonoBehaviour
     {
         
 
-
+        //main button press. add vertical slider here.
         if (loop == 5)
         {
             SpawnObject();
