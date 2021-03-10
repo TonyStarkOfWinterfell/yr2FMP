@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - SPHolder
+  - Manager
   layers:
   - Default
   - TransparentFX

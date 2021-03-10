@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class ClickerTutorial : MonoBehaviour
 {
+    /*
     //E1
     public Text coinsText;
     public double coins;
@@ -32,7 +33,7 @@ public class ClickerTutorial : MonoBehaviour
         coinsPerSecond = productionUpgrade1Level;
 
         coinsText.text = "Coins: " + coins.ToString("F0"); 
-        coinsPerSecText.text = coinsPerSecond.ToString("F0") + " coins/s";
+        //coinsPerSecText.text = coinsPerSecond.ToString("F0") + " coins/s";
         clickUpgrade1Text.text = "Click Upgrade 1\nCost " + clickUpgrade1Cost.ToString("F0") + " coins\nPower: =! Click\nLevel: " + clickUpgrade1Level;
         productionUpgrade1Text.text = "Prouction Upgrade 1\nCost " + productionUpgrade1Cost.ToString("F0") + " coins\nPower: +1 coins/s\nLevel: " + productionUpgrade1Level;
 
@@ -64,6 +65,6 @@ public class ClickerTutorial : MonoBehaviour
             productionUpgrade1Cost *= 1.07;            
         }
     }
-
+    */
 
 }

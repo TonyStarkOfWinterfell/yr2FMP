@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
+    public int clickFill;
+    //public Slider autoFill;
+    public int maxCats;
+
     public int maxObj = 6;
     public int currentObj = 0;
 
@@ -17,7 +21,8 @@ public class ButtonScript : MonoBehaviour
     public Vector3 centre;
     public Vector3 size;
 
-    
+
+    //revamp button to add percentage out of 100. +20+10+5.    for autofill- increase+1.deltaTime times ?
 
     public void Start()
     {
