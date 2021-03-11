@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1288010488603450586}
   - component: {fileID: 2216979742595029157}
   - component: {fileID: 1750895996384227222}
+  - component: {fileID: -219663528178739145}
   m_Layer: 0
   m_Name: 2_Object
-  m_TagString: Untagged
+  m_TagString: K2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.294118, y: 6.352941}
+    oldSize: {x: 10.378378, y: 5.8378377}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,3 +146,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 0}
   buttonScript: {fileID: 0}
+--- !u!114 &-219663528178739145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461179826671746657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890e298684e499b488cd441caf2da1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  health: {fileID: 0}
