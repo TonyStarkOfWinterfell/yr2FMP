@@ -1059,14 +1059,14 @@ MonoBehaviour:
   ifAuto: 0
   currentSpawn: {fileID: 0}
   lvl1: {fileID: 1936384936738212844, guid: 63a54f00947e51643aed92627e4f08de, type: 3}
-  lvl2: {fileID: 0}
-  lvl3: {fileID: 0}
-  lvl4: {fileID: 0}
-  lvl5: {fileID: 0}
-  lvl6: {fileID: 0}
-  lvl7: {fileID: 0}
-  lvl8: {fileID: 0}
-  lvl9: {fileID: 0}
+  lvl2: {fileID: 461179826671746657, guid: ad8d0e6ec21a43443849d625c7f7688a, type: 3}
+  lvl3: {fileID: 7113829361039062479, guid: 42541591799ae594a83a114032b89391, type: 3}
+  lvl4: {fileID: 5788254941187352418, guid: d1497e7ffb4b4c34299072313220a316, type: 3}
+  lvl5: {fileID: 8307782766478358309, guid: aeb1700c17df1ab41ac000c8d724db5c, type: 3}
+  lvl6: {fileID: 2704531336606023895, guid: 8fee3fd66eaf0c54586dfbfd93693a52, type: 3}
+  lvl7: {fileID: 7100627473358051801, guid: cd61e1fc6f4055f4ab952ee8b983b5bc, type: 3}
+  lvl8: {fileID: 1335882016435463912, guid: cd69fbc712a8aa04e8b2de72beaafad3, type: 3}
+  lvl9: {fileID: 108665587872963052, guid: 1eec2110810ae6c4c8b75bd46f007cb1, type: 3}
   autoFill: {fileID: 627945638}
   maxFill: 0
   currentFill: 0
@@ -5858,7 +5858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -214, y: -76.99997}
+  m_AnchoredPosition: {x: -214, y: -189}
   m_SizeDelta: {x: 160, y: 154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1397424908
