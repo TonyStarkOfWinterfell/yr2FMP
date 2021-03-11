@@ -8,6 +8,9 @@ public class Upgrades : MonoBehaviour
     public GameObject manageHolder;
     public Money money;
 
+    public GameObject mainButtonHolder;
+    public ButtonScript mainClick;
+
 
     private int U1 = 0;
     private int U2 = 0;
@@ -21,19 +24,19 @@ public class Upgrades : MonoBehaviour
     private int U10 = 0;
     private int U11 = 0;
   
-
-
-
+    
     private void Start()
     {
         manageHolder = GameObject.FindGameObjectWithTag("Manager");
         money = manageHolder.GetComponent<Money>();
+
+        mainButtonHolder = GameObject.FindGameObjectWithTag("SPHolder");
+        mainClick = mainButtonHolder.GetComponent<ButtonScript>();
     }
 
     public void AddMoney()
     {
-        money.coins += 20;
-        Debug.Log("add-money worked");
+        money.coins += 20;        
         money.UpdateCoins();
     }
 
@@ -46,7 +49,9 @@ public class Upgrades : MonoBehaviour
                 U1 = 1;
                 money.coins -= 15;
                 money.UpdateCoins();
-
+                Debug.Log(mainClick.currentClick);
+                mainClick.currentClick = 15;
+                Debug.Log(mainClick.currentClick);
             }
             else
             {

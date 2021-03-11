@@ -50,8 +50,8 @@ public class DropNDrag : MonoBehaviour
 
         if(mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
@@ -61,8 +61,8 @@ public class DropNDrag : MonoBehaviour
         }
         else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
@@ -71,38 +71,38 @@ public class DropNDrag : MonoBehaviour
         }
         else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            
+
         }
         else if (mouseButtonReleased && thisGameobjectName == "4" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            
+
         }
         else if (mouseButtonReleased && thisGameobjectName == "5" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            
+
         }
         else if (mouseButtonReleased && thisGameobjectName == "6" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
@@ -111,8 +111,8 @@ public class DropNDrag : MonoBehaviour
         }
         else if (mouseButtonReleased && thisGameobjectName == "7" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
@@ -121,14 +121,15 @@ public class DropNDrag : MonoBehaviour
         }
         else if (mouseButtonReleased && thisGameobjectName == "8" && thisGameobjectName == collisionGameobjectName)
         {
-            buttonScript.currentObj--;
-            buttonScript.buttonText.text = buttonScript.currentObj + "/6";
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
             Instantiate(Resources.Load("9_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
 
         }
+
     }
 
 
