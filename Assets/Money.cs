@@ -22,7 +22,6 @@ public class Money : MonoBehaviour
 
     public void UpdateCoins()
     {
-        coinsText.text = "£" + coins;
-        Debug.Log("update to " + coinsText);
+        coinsText.text = "£" + coins;        
     }
 }

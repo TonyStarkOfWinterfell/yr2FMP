@@ -68,6 +68,9 @@ public class Upgrades : MonoBehaviour
                 U2 = 1;
                 money.coins -= 75;
                 money.UpdateCoins();
+
+                mainClick.currentFPS = 15;
+                mainClick.ifAuto = true;                
             }
             else
             {

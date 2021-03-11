@@ -8,9 +8,13 @@ public class ButtonScript : MonoBehaviour
     public int maxVal;
     public int maxCats;
 
-    public int currentVal;
+    public double currentVal;
     public int currentCats;
     public int currentClick;
+
+    public double currentFPS; //fill per second
+    public bool ifAuto;
+
     public GameObject currentSpawn;    
         
     public GameObject lvl1;
@@ -34,12 +38,16 @@ public class ButtonScript : MonoBehaviour
     public Vector3 size;
 
 
-    //revamp button to add percentage out of 150.   for autofill- increase+1.deltaTime times ?
+    //revamp button to add percentage out of 150.   for autofill- increase+1.deltaTime times ? 
+    // ^^ done
 
     public void Start()
     {
         maxVal = 150;
         maxCats = 5;
+
+        currentFPS = 0;
+        ifAuto = false;
 
         currentVal = 0;
         currentCats = 0;
@@ -50,12 +58,17 @@ public class ButtonScript : MonoBehaviour
     public void Update()
     {
         SetFill(currentVal);
+
+        if(ifAuto == true)
+        {
+            currentVal += currentFPS * Time.deltaTime;
+        }
     }
 
-    public void SetFill(int fill)
+    public void SetFill(double fill)
     {
         //fill = currentVal;
-        autoFill.value = fill;
+        autoFill.value = (float)fill;
     }
 
     public void OnMouseDown()
@@ -66,12 +79,13 @@ public class ButtonScript : MonoBehaviour
     public void PushyButton()
     {
         
-        //main button press. add vertical slider here.
+        //need to take spawn code out of pushing button
         if (currentVal >= maxVal)
         {
             SpawnObject();
             currentVal = 0;            
         }
+        //add if statement upwards saying if current cats is >= max cats then dont spawn. check whether up or dwn add also check it doesnt increase
         else
         {
             currentVal += currentClick;            

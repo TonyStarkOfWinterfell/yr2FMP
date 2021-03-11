@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ClickerTutorial : MonoBehaviour
 {
-    /*
+    
     //E1
     public Text coinsText;
     public double coins;
@@ -65,6 +65,6 @@ public class ClickerTutorial : MonoBehaviour
             productionUpgrade1Cost *= 1.07;            
         }
     }
-    */
+    
 
 }
