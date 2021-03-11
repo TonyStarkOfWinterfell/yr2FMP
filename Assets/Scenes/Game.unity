@@ -1065,7 +1065,9 @@ MonoBehaviour:
   lvl7: {fileID: 0}
   lvl8: {fileID: 0}
   lvl9: {fileID: 0}
-  autoFill: {fileID: 0}
+  autoFill: {fileID: 627945638}
+  maxFill: 0
+  currentFill: 0
   buttonText: {fileID: 1402358022}
   centre: {x: 0, y: 0, z: 0}
   size: {x: 10, y: 8, z: 0}

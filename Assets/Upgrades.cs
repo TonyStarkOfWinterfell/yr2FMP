@@ -49,9 +49,8 @@ public class Upgrades : MonoBehaviour
                 U1 = 1;
                 money.coins -= 15;
                 money.UpdateCoins();
-                Debug.Log(mainClick.currentClick);
-                mainClick.currentClick = 15;
-                Debug.Log(mainClick.currentClick);
+                
+                mainClick.currentClick = 15;                
             }
             else
             {

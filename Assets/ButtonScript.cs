@@ -23,7 +23,10 @@ public class ButtonScript : MonoBehaviour
     public GameObject lvl8;
     public GameObject lvl9;
 
-    public Slider autoFill;    
+    public Slider autoFill;
+
+    public int maxFill;
+    public int currentFill;
 
     public Text buttonText;
 
@@ -44,7 +47,16 @@ public class ButtonScript : MonoBehaviour
         currentSpawn = lvl1;
     }
 
-    
+    public void Update()
+    {
+        SetFill(currentVal);
+    }
+
+    public void SetFill(int fill)
+    {
+        //fill = currentVal;
+        autoFill.value = fill;
+    }
 
     public void OnMouseDown()
     {
