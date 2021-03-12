@@ -13,24 +13,42 @@ public class DropNDrag : MonoBehaviour
     public GameObject spawnHolder;
     public ButtonScript buttonScript;
 
+    public GameObject manageHolder3;
+    public Money money3;
+
+    public GameObject shop;
+
 
     private void Start()
     {
         spawnHolder = GameObject.FindGameObjectWithTag("SPHolder");
         buttonScript = spawnHolder.GetComponent<ButtonScript>();
+
+        manageHolder3 = GameObject.FindGameObjectWithTag("Manager");
+        money3 = manageHolder3.GetComponent<Money>();
     }
 
     public void OnMouseDown()
     {
-        mouseButtonReleased = false;
-        offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-        offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+        if(this.gameObject != shop)
+        {
+            mouseButtonReleased = false;
+            offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+            offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+
+            Debug.Log("clicked on shop");
+        }
+        
     }
 
     public void OnMouseDrag()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector2(mousePosition.x - offsetX, mousePosition.y - offsetY);
+        if(this.gameObject != shop)
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector2(mousePosition.x - offsetX, mousePosition.y - offsetY);
+        }
+        Debug.Log("trna drag on on shop");
     }
 
     public void OnMouseUp()
@@ -128,7 +146,55 @@ public class DropNDrag : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
 
+        }      
+        else if (mouseButtonReleased && collisionGameobjectName == "PetShop")
+        {
+            buttonScript.currentCats--;
+            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;            
+            mouseButtonReleased = false;
+
+            Debug.Log("drop on shop worked");
+
+            switch (gameObject.tag)
+            {
+                case "K1":
+                    money3.coins += 1;
+                    break;
+                case "K2":
+                    money3.coins += 16;
+                    break;
+                case "K3":
+                    money3.coins += 81;
+                    break;
+                case "K4":
+                    money3.coins += 256;
+                    break;
+                case "K5":
+                    money3.coins += 625;
+                    break;
+                case "K6":
+                    money3.coins += 1296;
+                    break;
+                case "K7":
+                    money3.coins += 2400;
+                    break;
+                case "K8":
+                    money3.coins += 4850;
+                    break;
+                case "K9":
+                    money3.coins += 10000;
+                    break;
+                default:
+                    Debug.Log("not sure what to do with this right now lol");
+                    break;
+            }
+
+            Destroy(gameObject);
+            //destroying obj then using it
+
         }
+
+
 
     }
 

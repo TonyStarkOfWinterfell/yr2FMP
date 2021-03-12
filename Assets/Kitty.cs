@@ -12,6 +12,10 @@ public class Kitty : MonoBehaviour
     public GameObject manageHolder2;
     public Money money2;
 
+    public float waitTimer = 2.0f;
+    public float currentTimer = 0.0f;
+
+
     public int autoMultiplier;
 
 
@@ -28,6 +32,8 @@ public class Kitty : MonoBehaviour
 
         manageHolder2 = GameObject.FindGameObjectWithTag("Manager");
         money2 = manageHolder2.GetComponent<Money>();
+
+       
 
         //on thingy spawned
 
@@ -76,17 +82,24 @@ public class Kitty : MonoBehaviour
             TakeDamage(20);
         }*/
 
-        StartCoroutine(AutoGenerate());
-        
-        Debug.Log("passed update");
+
+
+
+        currentTimer += Time.deltaTime;
+
+        if(currentTimer >= waitTimer)
+        {
+            currentTimer = 0.0f;
+            StartCoroutine(AutoGenerate());
+        }                   
     }
 
     IEnumerator AutoGenerate()
-    {      
+    {        
         yield return new WaitForSeconds(2);
         
         money2.coins += autoMultiplier;
-        money2.UpdateCoins();
+        money2.UpdateCoins();        
     }
 
     /*
@@ -96,5 +109,11 @@ public class Kitty : MonoBehaviour
 
         health.SetHealth(currentHealth);
     }*/
+
+
+
+
+
+    
 
 }
