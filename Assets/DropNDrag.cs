@@ -17,7 +17,9 @@ public class DropNDrag : MonoBehaviour
     public Money money3;
 
     public GameObject shop;
+    public GameObject vet;
 
+    public GameObject spawnBox;
 
     private void Start()
     {
@@ -30,12 +32,16 @@ public class DropNDrag : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if(this.gameObject != shop)
+        if(this.gameObject != shop || this.gameObject != vet)
         {
             mouseButtonReleased = false;
             offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
 
+            
+        }
+        else
+        {
             Debug.Log("clicked on shop");
         }
         
@@ -43,12 +49,15 @@ public class DropNDrag : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if(this.gameObject != shop)
+        if(this.gameObject != shop || this.gameObject != vet)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mousePosition.x - offsetX, mousePosition.y - offsetY);
         }
-        Debug.Log("trna drag on on shop");
+        else
+        {
+            Debug.Log("trna drag on on shop");
+        }
     }
 
     public void OnMouseUp()
@@ -63,10 +72,15 @@ public class DropNDrag : MonoBehaviour
         string thisGameobjectName;
         string collisionGameobjectName;
 
+        //give the value of collision object to the first character only VVV
+        //also need name and "_Object"
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
 
-        if(mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
+
+               
+       
+        if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentCats--;
             buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -147,13 +161,32 @@ public class DropNDrag : MonoBehaviour
             Destroy(gameObject);
 
         }      
-        else if (mouseButtonReleased && collisionGameobjectName == "PetShop")
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        else if (mouseButtonReleased && collisionGameobjectName == "P")
         {
             buttonScript.currentCats--;
             buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;            
             mouseButtonReleased = false;
 
-            Debug.Log("drop on shop worked");
+            
 
             switch (gameObject.tag)
             {
@@ -188,6 +221,53 @@ public class DropNDrag : MonoBehaviour
                     Debug.Log("not sure what to do with this right now lol");
                     break;
             }
+
+            money3.UpdateCoins();
+
+            Destroy(gameObject);
+            //destroying obj then using it
+
+        }
+
+
+        else if (mouseButtonReleased && collisionGameobjectName == "V")
+        {                       
+            mouseButtonReleased = false;
+
+
+
+            switch (gameObject.tag)
+            {
+                case "K1":
+                    Instantiate(Resources.Load("1_Object"), spawnBox.transform.position, Quaternion.identity);
+                    break;
+                case "K2":
+                    Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                    break;
+                case "K3":
+                    Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                    break;
+                case "K4":
+                    Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                    break;
+                case "K5":
+                    Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                    break;
+                case "K6":
+                    Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                    break;
+                case "K7":
+                    Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                    break;
+                case "K8":
+                    Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                    break;                
+                default:
+                    Debug.Log("not sure what to do with this right now lol");
+                    break;
+            }
+            money3.coins -= 100;
+            money3.UpdateCoins();
 
             Destroy(gameObject);
             //destroying obj then using it

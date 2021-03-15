@@ -146,6 +146,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHolder: {fileID: 0}
   buttonScript: {fileID: 0}
+  manageHolder3: {fileID: 0}
+  money3: {fileID: 0}
+  shop: {fileID: 0}
+  vet: {fileID: 0}
+  spawnBox: {fileID: 2187339204272058813, guid: cf74f8a1200e9f74fbd5a7950510c586,
+    type: 3}
 --- !u!114 &6222467494899945082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,3 +167,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   health: {fileID: 0}
+  manageHolder2: {fileID: 0}
+  money2: {fileID: 0}
+  waitTimer: 2
+  currentTimer: 0
+  autoMultiplier: 0
