@@ -21,6 +21,8 @@ public class DropNDrag : MonoBehaviour
 
     public GameObject spawnBox;
 
+    public bool sellDouble = false;
+
     private void Start()
     {
         spawnHolder = GameObject.FindGameObjectWithTag("SPHolder");
@@ -187,40 +189,79 @@ public class DropNDrag : MonoBehaviour
             mouseButtonReleased = false;
 
             
-
-            switch (gameObject.tag)
+            if(sellDouble == true)
             {
-                case "K1":
-                    money3.coins += 1;
-                    break;
-                case "K2":
-                    money3.coins += 16;
-                    break;
-                case "K3":
-                    money3.coins += 81;
-                    break;
-                case "K4":
-                    money3.coins += 256;
-                    break;
-                case "K5":
-                    money3.coins += 625;
-                    break;
-                case "K6":
-                    money3.coins += 1296;
-                    break;
-                case "K7":
-                    money3.coins += 2400;
-                    break;
-                case "K8":
-                    money3.coins += 4850;
-                    break;
-                case "K9":
-                    money3.coins += 10000;
-                    break;
-                default:
-                    Debug.Log("not sure what to do with this right now lol");
-                    break;
+                switch (gameObject.tag)
+                {
+                    case "K1":
+                        money3.coins += 1;
+                        break;
+                    case "K2":
+                        money3.coins += 16 * 1.25;
+                        break;
+                    case "K3":
+                        money3.coins += 81 * 1.25;
+                        break;
+                    case "K4":
+                        money3.coins += 256 * 1.25;
+                        break;
+                    case "K5":
+                        money3.coins += 625 * 1.25;
+                        break;
+                    case "K6":
+                        money3.coins += 1296 * 1.25;
+                        break;
+                    case "K7":
+                        money3.coins += 2400 * 1.25;
+                        break;
+                    case "K8":
+                        money3.coins += 4850 * 1.25;
+                        break;
+                    case "K9":
+                        money3.coins += 10000 * 1.25;
+                        break;
+                    default:
+                        Debug.Log("not sure what to do with this right now lol");
+                        break;
+                }
             }
+            else
+            {
+                switch (gameObject.tag)
+                {
+                    case "K1":
+                        money3.coins += 1;
+                        break;
+                    case "K2":
+                        money3.coins += 16;
+                        break;
+                    case "K3":
+                        money3.coins += 81;
+                        break;
+                    case "K4":
+                        money3.coins += 256;
+                        break;
+                    case "K5":
+                        money3.coins += 625;
+                        break;
+                    case "K6":
+                        money3.coins += 1296;
+                        break;
+                    case "K7":
+                        money3.coins += 2400;
+                        break;
+                    case "K8":
+                        money3.coins += 4850;
+                        break;
+                    case "K9":
+                        money3.coins += 10000;
+                        break;
+                    default:
+                        Debug.Log("not sure what to do with this right now lol");
+                        break;
+                }
+            }
+            
 
             money3.UpdateCoins();
 
@@ -234,44 +275,43 @@ public class DropNDrag : MonoBehaviour
         {                       
             mouseButtonReleased = false;
 
-
-
-            switch (gameObject.tag)
+            if (money3.coins >= 100)
             {
-                case "K1":
-                    Instantiate(Resources.Load("1_Object"), spawnBox.transform.position, Quaternion.identity);
-                    break;
-                case "K2":
-                    Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
-                    break;
-                case "K3":
-                    Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
-                    break;
-                case "K4":
-                    Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
-                    break;
-                case "K5":
-                    Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
-                    break;
-                case "K6":
-                    Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
-                    break;
-                case "K7":
-                    Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
-                    break;
-                case "K8":
-                    Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
-                    break;                
-                default:
-                    Debug.Log("not sure what to do with this right now lol");
-                    break;
-            }
-            money3.coins -= 100;
-            money3.UpdateCoins();
+                switch (gameObject.tag)
+                {
+                    case "K1":
+                        Instantiate(Resources.Load("1_Object"), spawnBox.transform.position, Quaternion.identity);
+                        break;
+                    case "K2":
+                        Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                        break;
+                    case "K3":
+                        Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                        break;
+                    case "K4":
+                        Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                        break;
+                    case "K5":
+                        Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                        break;
+                    case "K6":
+                        Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                        break;
+                    case "K7":
+                        Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                        break;
+                    case "K8":
+                        Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                        break;
+                    default:
+                        Debug.Log("not sure what to do with this right now lol");
+                        break;
+                }
+                money3.coins -= 100;
+                money3.UpdateCoins();
 
-            Destroy(gameObject);
-            //destroying obj then using it
-
+                Destroy(gameObject);
+            }                      
         }
 
 

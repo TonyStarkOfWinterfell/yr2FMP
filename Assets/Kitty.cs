@@ -19,6 +19,9 @@ public class Kitty : MonoBehaviour
     public int autoMultiplier;
 
 
+    public bool doublePassive = false;
+
+
 
     //seems to have individual generation. just need to figure out how to limit the update. maybe a loop with an if statement in the update.
 
@@ -87,6 +90,7 @@ public class Kitty : MonoBehaviour
 
         currentTimer += Time.deltaTime;
 
+
         if(currentTimer >= waitTimer)
         {
             currentTimer = 0.0f;
@@ -98,8 +102,16 @@ public class Kitty : MonoBehaviour
     {        
         yield return new WaitForSeconds(2);
         
-        money2.coins += autoMultiplier;
-        money2.UpdateCoins();        
+        if(doublePassive == true)
+        {
+            money2.coins += autoMultiplier * 1.5;
+            money2.UpdateCoins();
+        }
+        else
+        {
+            money2.coins += autoMultiplier;
+            money2.UpdateCoins();
+        }          
     }
 
     /*
