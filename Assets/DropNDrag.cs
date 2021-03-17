@@ -19,9 +19,13 @@ public class DropNDrag : MonoBehaviour
     public GameObject shop;
     public GameObject vet;
 
-    public GameObject spawnBox;
+    public GameObject spawnBox;    
 
     public bool sellDouble = false;
+
+
+
+
 
     private void Start()
     {
@@ -29,18 +33,16 @@ public class DropNDrag : MonoBehaviour
         buttonScript = spawnHolder.GetComponent<ButtonScript>();
 
         manageHolder3 = GameObject.FindGameObjectWithTag("Manager");
-        money3 = manageHolder3.GetComponent<Money>();
+        money3 = manageHolder3.GetComponent<Money>();        
     }
 
     public void OnMouseDown()
     {
-        if(this.gameObject != shop || this.gameObject != vet)
+        if(this.gameObject != shop && this.gameObject != vet)
         {
             mouseButtonReleased = false;
             offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-            offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
-
-            
+            offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;            
         }
         else
         {
@@ -51,15 +53,11 @@ public class DropNDrag : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if(this.gameObject != shop || this.gameObject != vet)
+        if(this.gameObject != shop && this.gameObject != vet)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector2(mousePosition.x - offsetX, mousePosition.y - offsetY);
-        }
-        else
-        {
-            Debug.Log("trna drag on on shop");
-        }
+            transform.position = new Vector2(mousePosition.x - offsetX * 0, mousePosition.y - offsetY * 0);
+        }        
     }
 
     public void OnMouseUp()
@@ -73,20 +71,20 @@ public class DropNDrag : MonoBehaviour
     {
         string thisGameobjectName;
         string collisionGameobjectName;
-
+        
         //give the value of collision object to the first character only VVV
         //also need name and "_Object"
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
 
+        
 
-               
-       
+
         if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentCats--;
             buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);                   
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);

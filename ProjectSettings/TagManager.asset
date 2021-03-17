@@ -16,6 +16,7 @@ TagManager:
   - K8
   - K9
   - PetShop
+  - CanvasSpawn
   layers:
   - Default
   - TransparentFX

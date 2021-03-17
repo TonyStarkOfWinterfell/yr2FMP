@@ -5,22 +5,30 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public Slider slider;
-    public Gradient gradient;
-    public Image fill;
-    
-    public void SetMaxHealth(int health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
+    public int maxHealth;
+    public int currentHealth;
 
-        fill.color = gradient.Evaluate(1f);
+    public GameObject childHold;
+    public Transform fillHold;
+    
+    public void Start()
+    {
+        //Assigns the transform of the first child of the Game Object this script is attached to.
+        fillHold = this.gameObject.transform.GetChild(0);
+
+        //Assigns the first child of the first child of the Game Object this script is attached to.
+        //grandChild = this.gameObject.transform.GetChild(0).GetChild(0).gameObject;
     }
 
-    public void SetHealth(int health)
+    public void SetMaxHealth()
     {
-        slider.value = health;
+        //child scale x - 2.85
+        //min = 0
+        maxHealth = 100;
+    }
 
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+    public void SetHealth()
+    {
+        
     }
 }

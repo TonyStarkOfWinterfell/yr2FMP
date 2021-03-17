@@ -100,6 +100,7 @@ public class Kitty : MonoBehaviour
 
     IEnumerator AutoGenerate()
     {        
+        //might not need to wait for this as wait is in update.
         yield return new WaitForSeconds(2);
         
         if(doublePassive == true)
