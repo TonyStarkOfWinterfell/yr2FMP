@@ -17,6 +17,8 @@ TagManager:
   - K9
   - PetShop
   - CanvasSpawn
+  - Food
+  - ResetFood
   layers:
   - Default
   - TransparentFX

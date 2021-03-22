@@ -70,7 +70,7 @@ public class Kitty : MonoBehaviour
                 autoMultiplier = 768;
                 break;
             default:
-                Debug.Log("not sure what to do with this right now lol");
+                //
                 break;
         }
 

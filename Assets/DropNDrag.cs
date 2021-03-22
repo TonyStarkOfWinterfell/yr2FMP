@@ -18,8 +18,17 @@ public class DropNDrag : MonoBehaviour
 
     public GameObject shop;
     public GameObject vet;
+    public GameObject food;
 
-    public GameObject spawnBox;    
+    public GameObject resetFood;
+
+    public Image image;
+
+    /*
+    public Transform currentFood;
+    public Transform resetFood;
+    */
+    //public GameObject spawnBox;    
 
     public bool sellDouble = false;
 
@@ -33,22 +42,29 @@ public class DropNDrag : MonoBehaviour
         buttonScript = spawnHolder.GetComponent<ButtonScript>();
 
         manageHolder3 = GameObject.FindGameObjectWithTag("Manager");
-        money3 = manageHolder3.GetComponent<Money>();        
+        money3 = manageHolder3.GetComponent<Money>();
+
+        resetFood = GameObject.FindGameObjectWithTag("ResetFood");
+        food = GameObject.FindGameObjectWithTag("Food");
+
+        image = food.gameObject.GetComponent<Image>();
+
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 0f); 
+        food.transform.position = resetFood.transform.position;
     }
 
     public void OnMouseDown()
     {
         if(this.gameObject != shop && this.gameObject != vet)
         {
+            if (this.gameObject == food)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+            }
             mouseButtonReleased = false;
             offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;            
-        }
-        else
-        {
-            Debug.Log("clicked on shop");
-        }
-        
+        }                        
     }
 
     public void OnMouseDrag()
@@ -57,12 +73,16 @@ public class DropNDrag : MonoBehaviour
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mousePosition.x - offsetX * 0, mousePosition.y - offsetY * 0);
-        }        
+        }
+        if (this.gameObject == food)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+        }
     }
 
     public void OnMouseUp()
     {
-        mouseButtonReleased = true;
+        mouseButtonReleased = true;                
     }
 
 
@@ -187,7 +207,9 @@ public class DropNDrag : MonoBehaviour
             mouseButtonReleased = false;
 
             
-            if(sellDouble == true)
+
+
+            if (sellDouble == true)
             {
                 switch (gameObject.tag)
                 {
@@ -195,28 +217,28 @@ public class DropNDrag : MonoBehaviour
                         money3.coins += 1;
                         break;
                     case "K2":
-                        money3.coins += 16 * 1.25;
+                        money3.coins += 16 * 2;
                         break;
                     case "K3":
-                        money3.coins += 81 * 1.25;
+                        money3.coins += 81 * 2;
                         break;
                     case "K4":
-                        money3.coins += 256 * 1.25;
+                        money3.coins += 256 * 2;
                         break;
                     case "K5":
-                        money3.coins += 625 * 1.25;
+                        money3.coins += 625 * 2;
                         break;
                     case "K6":
-                        money3.coins += 1296 * 1.25;
+                        money3.coins += 1296 * 2;
                         break;
                     case "K7":
-                        money3.coins += 2400 * 1.25;
+                        money3.coins += 2400 * 2;
                         break;
                     case "K8":
-                        money3.coins += 4850 * 1.25;
+                        money3.coins += 4850 * 2;
                         break;
                     case "K9":
-                        money3.coins += 10000 * 1.25;
+                        money3.coins += 10000 * 2;
                         break;
                     default:
                         Debug.Log("not sure what to do with this right now lol");
@@ -268,6 +290,7 @@ public class DropNDrag : MonoBehaviour
 
         }
 
+        
 
         else if (mouseButtonReleased && collisionGameobjectName == "V")
         {                       
@@ -278,7 +301,7 @@ public class DropNDrag : MonoBehaviour
                 switch (gameObject.tag)
                 {
                     case "K1":
-                        Instantiate(Resources.Load("1_Object"), spawnBox.transform.position, Quaternion.identity);
+                        Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
                         break;
                     case "K2":
                         Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
@@ -313,13 +336,29 @@ public class DropNDrag : MonoBehaviour
         }
 
 
+        else if (mouseButtonReleased && thisGameobjectName == "F" && collisionGameobjectName == "1")
+        {
+            mouseButtonReleased = false;
+            Debug.Log("cat 1 fed");
+            /* image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
+             food.transform.position = resetFood.transform.position;
 
-    }
+
+             //health.setHealth();*/
+
+        }
+
+        Debug.Log(thisGameobjectName);
+        Debug.Log(collisionGameobjectName);
 
 
 
+        /*
+        food.GetComponent<Image>().enabled = false;
+        currentFood.position = resetFood.position;*/
 
 
 
-
+    }    
 }
+

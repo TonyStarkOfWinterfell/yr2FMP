@@ -42,7 +42,7 @@ public class Upgrades : MonoBehaviour
     private int U24 = 0;
     private int U25 = 0;
 
-
+    //new******** update-> for each gameobject that exists with tag(switch) then change the script value to upgrde
     private void Start()
     {
         manageHolder = GameObject.FindGameObjectWithTag("Manager");
