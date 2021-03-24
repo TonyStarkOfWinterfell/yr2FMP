@@ -37,12 +37,15 @@ public class ButtonScript : MonoBehaviour
     public Vector3 centre;
     public Vector3 size;
 
+    private Animator anim;
 
     //revamp button to add percentage out of 150.   for autofill- increase+1.deltaTime times ? 
     // ^^ done
 
     public void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
+
         maxVal = 150;
         maxCats = 5;
 
@@ -58,6 +61,7 @@ public class ButtonScript : MonoBehaviour
     public void Update()
     {
         SetFill(currentVal);
+
 
         if(ifAuto == true)
         {
@@ -78,7 +82,10 @@ public class ButtonScript : MonoBehaviour
 
     public void PushyButton()
     {
-        
+        //animator.Play("ButtonPop");
+
+
+
         //need to take spawn code out of pushing button
         if (currentVal >= maxVal)
         {
