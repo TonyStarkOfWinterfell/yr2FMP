@@ -37,14 +37,18 @@ public class ButtonScript : MonoBehaviour
     public Vector3 centre;
     public Vector3 size;
 
-    private Animator anim;
+    public Animator anim;
+    //private string currentState;
+    const string IDLE = "Idle";
+    const string BUTTONPOP = "ButtonPop";
+
 
     //revamp button to add percentage out of 150.   for autofill- increase+1.deltaTime times ? 
     // ^^ done
 
     public void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
         maxVal = 150;
         maxCats = 5;
@@ -62,8 +66,12 @@ public class ButtonScript : MonoBehaviour
     {
         SetFill(currentVal);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeAnimationState(BUTTONPOP);
+        }
 
-        if(ifAuto == true)
+        if (ifAuto == true)
         {
             currentVal += currentFPS * Time.deltaTime;
         }
@@ -77,7 +85,13 @@ public class ButtonScript : MonoBehaviour
 
     public void OnMouseDown()
     {
+        ChangeAnimationState(BUTTONPOP);
         PushyButton();        
+    }
+
+    public void OnMouseUp()
+    {
+        ChangeAnimationState(IDLE);        
     }
 
     public void PushyButton()
@@ -96,7 +110,7 @@ public class ButtonScript : MonoBehaviour
         else
         {
             currentVal += currentClick;            
-        }
+        }        
     }
 
 
@@ -118,7 +132,15 @@ public class ButtonScript : MonoBehaviour
 
     }
 
+    void ChangeAnimationState(string newState)
+    {
+        //stop same animation interupting
+        //if (currentState == newStat) return;
 
+        anim.Play(newState);
+
+        //currentState = newState;
+    }
 
 
 
