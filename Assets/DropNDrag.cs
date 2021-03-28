@@ -295,43 +295,48 @@ public class DropNDrag : MonoBehaviour
             }
             else
             {
-                if (money3.coins >= 100)
-                {
-                    switch (gameObject.tag)
-                    {
-                        case "K1":
-                            Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K2":
-                            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K3":
-                            Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K4":
-                            Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K5":
-                            Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K6":
-                            Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K7":
-                            Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
-                            break;
-                        case "K8":
-                            Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
-                            break;
-                        default:
-                            Debug.Log("not sure what to do with this right now lol");
-                            break;
-                    }
-                    money3.coins -= 100;
-                    money3.UpdateCoins();
+                localHealth = this.gameObject.GetComponent<Health>();
 
-                    Destroy(gameObject);
-                }
+                if (localHealth.scaled.transform.localScale.x <= 0)
+                {
+                    if (money3.coins >= 100)
+                    {
+                        switch (gameObject.tag)
+                        {
+                            case "K1":
+                                Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K2":
+                                Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K3":
+                                Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K4":
+                                Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K5":
+                                Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K6":
+                                Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K7":
+                                Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                                break;
+                            case "K8":
+                                Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                                break;
+                            default:
+                                Debug.Log("not sure what to do with this right now lol");
+                                break;
+                        }
+                        money3.coins -= 100;
+                        money3.UpdateCoins();
+
+                        Destroy(gameObject);
+                    }
+                }                                
             }           
         }        
         else if (mouseButtonReleased && thisGameobjectName == "F" && collisionGameobjectName != "P" && collisionGameobjectName != "V")
@@ -351,7 +356,7 @@ public class DropNDrag : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return 20;    //Wait one frame
+        yield return 20;
 
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         food.transform.position = resetFood.transform.position;

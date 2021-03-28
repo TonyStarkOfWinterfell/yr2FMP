@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
-{
-    
-    
-
+{ 
     public float maxSize;
     public float currentTimer;
     public float waitTime;
@@ -16,13 +13,13 @@ public class Health : MonoBehaviour
 
     public Transform scaled;
 
+    public Kitty kitty;
 
 
     public void Start()
     {
         scaled = transform.Find("HealthBar/FillHold");
-
-        //SetMaxHealth();
+        kitty = gameObject.GetComponent<Kitty>();        
 
         StartCoroutine(Scale());
 
@@ -63,6 +60,15 @@ public class Health : MonoBehaviour
 
     public void Update()
     {
+        if (scaled.transform.localScale.x <= 0)
+        {
+            kitty.isDead = true;
+        }
+        else
+        {
+            kitty.isDead = false;
+
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SetMaxHealth();
