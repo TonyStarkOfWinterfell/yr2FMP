@@ -22,7 +22,7 @@ public class DropNDrag : MonoBehaviour
 
     public GameObject resetFood;
 
-    public Image image;
+    public SpriteRenderer sprite;
 
     /*
     public Transform currentFood;
@@ -31,10 +31,6 @@ public class DropNDrag : MonoBehaviour
     //public GameObject spawnBox;    
 
     public bool sellDouble = false;
-
-
-
-
 
     private void Start()
     {
@@ -47,69 +43,65 @@ public class DropNDrag : MonoBehaviour
         resetFood = GameObject.FindGameObjectWithTag("ResetFood");
         food = GameObject.FindGameObjectWithTag("Food");
 
-        image = food.gameObject.GetComponent<Image>();
-
-        image.color = new Color(image.color.r, image.color.g, image.color.b, 0f); 
+        sprite = food.gameObject.GetComponent<SpriteRenderer>();
+        
+        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
+        //future problem with cats autospawning VVVVVVV
         food.transform.position = resetFood.transform.position;
     }
-
-    public void OnMouseDown()
+        public void OnMouseDown()
     {
         if(this.gameObject != shop && this.gameObject != vet)
         {
-            if (this.gameObject == food)
+            /*if (this.gameObject == food)
             {
-                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
-            }
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
+            }*/
             mouseButtonReleased = false;
             offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;            
         }                        
     }
-
-    public void OnMouseDrag()
+        public void OnMouseDrag()
     {
         if(this.gameObject != shop && this.gameObject != vet)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mousePosition.x - offsetX * 0, mousePosition.y - offsetY * 0);
         }
-        if (this.gameObject == food)
+        /*if (this.gameObject == food)
         {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
-        }
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
+        }*/
     }
 
     public void OnMouseUp()
     {
         mouseButtonReleased = true;                
     }
-
-
-
+    
     public void OnTriggerStay2D(Collider2D collision)
     {
         string thisGameobjectName;
-        string collisionGameobjectName;
-        
+        string collisionGameobjectName;       
+
         //give the value of collision object to the first character only VVV
-        //also need name and "_Object"
+        //also all names need to be 1 letter/number with "_Object"        
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
 
-        
 
 
         if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentCats--;
             buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);                   
+            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
             //destroying obj then using it
-           
+
         }
         else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
         {
@@ -119,7 +111,7 @@ public class DropNDrag : MonoBehaviour
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            
+
         }
         else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName)
         {
@@ -180,8 +172,7 @@ public class DropNDrag : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
 
-        }      
-                          
+        }
 
 
 
@@ -200,7 +191,8 @@ public class DropNDrag : MonoBehaviour
 
 
 
-        else if (mouseButtonReleased && collisionGameobjectName == "P")
+
+        else if (mouseButtonReleased && collisionGameobjectName == "P" && thisGameobjectName != "F")
         {
             buttonScript.currentCats--;
             buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;            
@@ -289,10 +281,9 @@ public class DropNDrag : MonoBehaviour
             //destroying obj then using it
 
         }
-
         
 
-        else if (mouseButtonReleased && collisionGameobjectName == "V")
+        else if (mouseButtonReleased && collisionGameobjectName == "V" && thisGameobjectName != "F")
         {                       
             mouseButtonReleased = false;
 
@@ -348,14 +339,10 @@ public class DropNDrag : MonoBehaviour
 
         }
 
-        Debug.Log(thisGameobjectName);
-        Debug.Log(collisionGameobjectName);
 
+        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
+        //food.transform.position = resetFood.transform.position;
 
-
-        /*
-        food.GetComponent<Image>().enabled = false;
-        currentFood.position = resetFood.position;*/
 
 
 
