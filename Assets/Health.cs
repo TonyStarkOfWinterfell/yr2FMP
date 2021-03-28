@@ -16,6 +16,8 @@ public class Health : MonoBehaviour
 
     public Transform scaled;
 
+
+
     public void Start()
     {
         scaled = transform.Find("HealthBar/FillHold");
@@ -77,9 +79,13 @@ public class Health : MonoBehaviour
 
     public void HealFood()
     {
-        if (scaled.transform.localScale.x == (2.9f - currentFood))// if heal + current is bigger than max then set max
+        if (scaled.transform.localScale.x >= (2.9f - currentFood))
         {
-
+            SetMaxHealth();
+        }
+        else
+        {
+            scaled.transform.localScale = new Vector3(scaled.transform.localScale.x + currentFood, scaled.transform.localScale.y, scaled.transform.localScale.z);
         }
     }
 

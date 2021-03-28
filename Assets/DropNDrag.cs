@@ -24,10 +24,8 @@ public class DropNDrag : MonoBehaviour
 
     public SpriteRenderer sprite;
 
-    /*
-    public Transform currentFood;
-    public Transform resetFood;
-    */
+    public Health localHealth;
+
     //public GameObject spawnBox;    
 
     public bool sellDouble = false;
@@ -45,39 +43,40 @@ public class DropNDrag : MonoBehaviour
 
         sprite = food.gameObject.GetComponent<SpriteRenderer>();
         
-        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
         //future problem with cats autospawning VVVVVVV
         food.transform.position = resetFood.transform.position;
     }
-        public void OnMouseDown()
+    public void OnMouseDown()
     {
         if(this.gameObject != shop && this.gameObject != vet)
         {
-            /*if (this.gameObject == food)
+            if (this.gameObject == food)
             {
                 sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
-            }*/
+            }
             mouseButtonReleased = false;
             offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;            
         }                        
     }
-        public void OnMouseDrag()
+    public void OnMouseDrag()
     {
         if(this.gameObject != shop && this.gameObject != vet)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mousePosition.x - offsetX * 0, mousePosition.y - offsetY * 0);
         }
-        /*if (this.gameObject == food)
+        if (this.gameObject == food)
         {
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
-        }*/
+        }
     }
 
     public void OnMouseUp()
     {
-        mouseButtonReleased = true;                
+        mouseButtonReleased = true;
+        StartCoroutine(Wait());
     }
     
     public void OnTriggerStay2D(Collider2D collision)
@@ -100,7 +99,7 @@ public class DropNDrag : MonoBehaviour
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            //destroying obj then using it
+            
 
         }
         else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
@@ -192,160 +191,170 @@ public class DropNDrag : MonoBehaviour
 
 
 
-        else if (mouseButtonReleased && collisionGameobjectName == "P" && thisGameobjectName != "F")
+        else if (mouseButtonReleased && collisionGameobjectName == "P")
         {
             buttonScript.currentCats--;
             buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;            
             mouseButtonReleased = false;
 
-            
-
-
-            if (sellDouble == true)
+            if (thisGameobjectName == "F")
             {
-                switch (gameObject.tag)
-                {
-                    case "K1":
-                        money3.coins += 1;
-                        break;
-                    case "K2":
-                        money3.coins += 16 * 2;
-                        break;
-                    case "K3":
-                        money3.coins += 81 * 2;
-                        break;
-                    case "K4":
-                        money3.coins += 256 * 2;
-                        break;
-                    case "K5":
-                        money3.coins += 625 * 2;
-                        break;
-                    case "K6":
-                        money3.coins += 1296 * 2;
-                        break;
-                    case "K7":
-                        money3.coins += 2400 * 2;
-                        break;
-                    case "K8":
-                        money3.coins += 4850 * 2;
-                        break;
-                    case "K9":
-                        money3.coins += 10000 * 2;
-                        break;
-                    default:
-                        Debug.Log("not sure what to do with this right now lol");
-                        break;
-                }
+                //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
+                food.transform.position = resetFood.transform.position;
             }
             else
             {
-                switch (gameObject.tag)
+                if (sellDouble == true)
                 {
-                    case "K1":
-                        money3.coins += 1;
-                        break;
-                    case "K2":
-                        money3.coins += 16;
-                        break;
-                    case "K3":
-                        money3.coins += 81;
-                        break;
-                    case "K4":
-                        money3.coins += 256;
-                        break;
-                    case "K5":
-                        money3.coins += 625;
-                        break;
-                    case "K6":
-                        money3.coins += 1296;
-                        break;
-                    case "K7":
-                        money3.coins += 2400;
-                        break;
-                    case "K8":
-                        money3.coins += 4850;
-                        break;
-                    case "K9":
-                        money3.coins += 10000;
-                        break;
-                    default:
-                        Debug.Log("not sure what to do with this right now lol");
-                        break;
+                    switch (gameObject.tag)
+                    {
+                        case "K1":
+                            money3.coins += 1;
+                            break;
+                        case "K2":
+                            money3.coins += 16 * 2;
+                            break;
+                        case "K3":
+                            money3.coins += 81 * 2;
+                            break;
+                        case "K4":
+                            money3.coins += 256 * 2;
+                            break;
+                        case "K5":
+                            money3.coins += 625 * 2;
+                            break;
+                        case "K6":
+                            money3.coins += 1296 * 2;
+                            break;
+                        case "K7":
+                            money3.coins += 2400 * 2;
+                            break;
+                        case "K8":
+                            money3.coins += 4850 * 2;
+                            break;
+                        case "K9":
+                            money3.coins += 10000 * 2;
+                            break;
+                        default:
+                            Debug.Log("not sure what to do with this right now lol");
+                            break;
+                    }
                 }
-            }
-            
-
-            money3.UpdateCoins();
-
-            Destroy(gameObject);
-            //destroying obj then using it
-
-        }
-        
-
-        else if (mouseButtonReleased && collisionGameobjectName == "V" && thisGameobjectName != "F")
-        {                       
-            mouseButtonReleased = false;
-
-            if (money3.coins >= 100)
-            {
-                switch (gameObject.tag)
+                else
                 {
-                    case "K1":
-                        Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K2":
-                        Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K3":
-                        Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K4":
-                        Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K5":
-                        Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K6":
-                        Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K7":
-                        Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
-                        break;
-                    case "K8":
-                        Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
-                        break;
-                    default:
-                        Debug.Log("not sure what to do with this right now lol");
-                        break;
+                    switch (gameObject.tag)
+                    {
+                        case "K1":
+                            money3.coins += 1;
+                            break;
+                        case "K2":
+                            money3.coins += 16;
+                            break;
+                        case "K3":
+                            money3.coins += 81;
+                            break;
+                        case "K4":
+                            money3.coins += 256;
+                            break;
+                        case "K5":
+                            money3.coins += 625;
+                            break;
+                        case "K6":
+                            money3.coins += 1296;
+                            break;
+                        case "K7":
+                            money3.coins += 2400;
+                            break;
+                        case "K8":
+                            money3.coins += 4850;
+                            break;
+                        case "K9":
+                            money3.coins += 10000;
+                            break;
+                        default:
+                            Debug.Log("not sure what to do with this right now lol");
+                            break;
+                    }
                 }
-                money3.coins -= 100;
+
+
                 money3.UpdateCoins();
 
                 Destroy(gameObject);
-            }                      
-        }
+                //destroying obj then using it
+            }
+        }       
+        else if (mouseButtonReleased && collisionGameobjectName == "V")
+        {                       
+            mouseButtonReleased = false;
 
+            if (thisGameobjectName == "F")
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
+                food.transform.position = resetFood.transform.position;
+            }
+            else
+            {
+                if (money3.coins >= 100)
+                {
+                    switch (gameObject.tag)
+                    {
+                        case "K1":
+                            Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K2":
+                            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K3":
+                            Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K4":
+                            Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K5":
+                            Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K6":
+                            Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K7":
+                            Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                            break;
+                        case "K8":
+                            Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                            break;
+                        default:
+                            Debug.Log("not sure what to do with this right now lol");
+                            break;
+                    }
+                    money3.coins -= 100;
+                    money3.UpdateCoins();
 
-        else if (mouseButtonReleased && thisGameobjectName == "F" && collisionGameobjectName == "1")
+                    Destroy(gameObject);
+                }
+            }           
+        }        
+        else if (mouseButtonReleased && thisGameobjectName == "F" && collisionGameobjectName != "P" && collisionGameobjectName != "V")
         {
             mouseButtonReleased = false;
-            Debug.Log("cat 1 fed");
-            /* image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
-             food.transform.position = resetFood.transform.position;
+            localHealth = collision.gameObject.GetComponent<Health>();
 
+            localHealth.currentFood = 1.45f;
+            Debug.Log("passed health assign");
 
-             //health.setHealth();*/
+            localHealth.HealFood();
+
+            Debug.Log("healthfood should be called");
 
         }
+    }
 
+    IEnumerator Wait()
+    {
+        yield return 20;    //Wait one frame
 
-        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
-        //food.transform.position = resetFood.transform.position;
-
-
-
-
-    }    
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
+        food.transform.position = resetFood.transform.position;
+    }
 }
 
