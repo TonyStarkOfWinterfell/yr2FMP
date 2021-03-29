@@ -19,6 +19,7 @@ TagManager:
   - CanvasSpawn
   - Food
   - ResetFood
+  - ShopS
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class ButtonScript : MonoBehaviour
 {
     public int maxVal;
     public int maxCats;
-
+    //if current cats > 0 random play meow -- 20 secs/
     public double currentVal;
     public int currentCats;
     public int currentClick;
@@ -38,17 +38,20 @@ public class ButtonScript : MonoBehaviour
     public Vector3 size;
 
     public Animator anim;
-    //private string currentState;
+
     const string IDLE = "Idle";
     const string BUTTONPOP = "ButtonPop";
 
+    public GameObject buttonHolder;
+    public AudioClip buttonClick;
+    AudioSource buttonSource;
 
-    //revamp button to add percentage out of 150.   for autofill- increase+1.deltaTime times ? 
-    // ^^ done
 
     public void Start()
     {
         anim = GetComponent<Animator>();
+
+        buttonSource = buttonHolder.GetComponent<AudioSource>();
 
         maxVal = 150;
         maxCats = 5;
@@ -86,6 +89,7 @@ public class ButtonScript : MonoBehaviour
     public void OnMouseDown()
     {
         ChangeAnimationState(BUTTONPOP);
+        buttonSource.PlayOneShot(buttonClick);
         PushyButton();        
     }
 
@@ -138,8 +142,6 @@ public class ButtonScript : MonoBehaviour
         //if (currentState == newStat) return;
 
         anim.Play(newState);
-
-        //currentState = newState;
     }
 
 

@@ -26,7 +26,13 @@ public class DropNDrag : MonoBehaviour
 
     public Health localHealth;
 
-    //public GameObject spawnBox;    
+    public GameObject foodHolder;
+    public AudioClip foodMunch;
+    AudioSource foodSource;
+
+    public GameObject shopHolder;
+    public AudioClip shopBell;
+    AudioSource shopSource;
 
     public bool sellDouble = false;
 
@@ -44,8 +50,17 @@ public class DropNDrag : MonoBehaviour
         sprite = food.gameObject.GetComponent<SpriteRenderer>();
         
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
-        //future problem with cats autospawning VVVVVVV
+        //future problem with cats autospawning and reseting mid drag VVVVVVV
         food.transform.position = resetFood.transform.position;
+
+        foodSource = foodHolder.GetComponent<AudioSource>();
+
+        shopHolder = GameObject.FindGameObjectWithTag("ShopS");
+        shopBell = Resources.Load<AudioClip>("hoverShop");
+        shopSource = shopHolder.GetComponent<AudioSource>();
+        
+        //shopSource.PlayOneShot(shopBell);
+
     }
     public void OnMouseDown()
     {
@@ -78,7 +93,25 @@ public class DropNDrag : MonoBehaviour
         mouseButtonReleased = true;
         StartCoroutine(Wait());
     }
-    
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        string thisGameobjectName;
+        string collisionGameobjectName;
+
+        //give the value of collision object to the first character only VVV
+        //also all names need to be 1 letter/number with "_Object"        
+        thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
+        collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
+                                                  
+
+        if (thisGameobjectName == "P" && collisionGameobjectName != "F")
+        {
+            Debug.Log("drag then what");
+            shopSource.PlayOneShot(shopBell);
+        }
+    }
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         string thisGameobjectName;
@@ -172,11 +205,6 @@ public class DropNDrag : MonoBehaviour
             Destroy(gameObject);
 
         }
-
-
-
-
-
 
 
 
@@ -345,12 +373,10 @@ public class DropNDrag : MonoBehaviour
             localHealth = collision.gameObject.GetComponent<Health>();
 
             localHealth.currentFood = 1.45f;
-            Debug.Log("passed health assign");
+
+            foodSource.PlayOneShot(foodMunch);
 
             localHealth.HealFood();
-
-            Debug.Log("healthfood should be called");
-
         }
     }
 
