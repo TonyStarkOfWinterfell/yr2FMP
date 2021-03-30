@@ -53,6 +53,8 @@ public class DropNDrag : MonoBehaviour
         //future problem with cats autospawning and reseting mid drag VVVVVVV
         food.transform.position = resetFood.transform.position;
 
+        foodHolder = GameObject.FindGameObjectWithTag("FoodS");
+        foodMunch = Resources.Load<AudioClip>("FoodSound");
         foodSource = foodHolder.GetComponent<AudioSource>();
 
         shopHolder = GameObject.FindGameObjectWithTag("ShopS");
@@ -106,8 +108,7 @@ public class DropNDrag : MonoBehaviour
                                                   
 
         if (thisGameobjectName == "P" && collisionGameobjectName != "F")
-        {
-            Debug.Log("drag then what");
+        {            
             shopSource.PlayOneShot(shopBell);
         }
     }
@@ -205,16 +206,6 @@ public class DropNDrag : MonoBehaviour
             Destroy(gameObject);
 
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -377,12 +368,13 @@ public class DropNDrag : MonoBehaviour
             foodSource.PlayOneShot(foodMunch);
 
             localHealth.HealFood();
+            Debug.Log("dragged food on cat");
         }
     }
 
     IEnumerator Wait()
     {
-        yield return 20;
+        yield return new WaitForSeconds(0.05f);
 
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         food.transform.position = resetFood.transform.position;

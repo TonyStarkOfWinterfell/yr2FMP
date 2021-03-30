@@ -20,6 +20,7 @@ TagManager:
   - Food
   - ResetFood
   - ShopS
+  - FoodS
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,9 @@ public class Health : MonoBehaviour
     public void Start()
     {
         scaled = transform.Find("HealthBar/FillHold");
-        kitty = gameObject.GetComponent<Kitty>();        
+        kitty = gameObject.GetComponent<Kitty>();
+
+        currentFood = 0.5f;
 
         StartCoroutine(Scale());
 
@@ -85,13 +87,18 @@ public class Health : MonoBehaviour
 
     public void HealFood()
     {
+        Debug.Log("Started food heal shiiiii");
         if (scaled.transform.localScale.x >= (2.9f - currentFood))
         {
             SetMaxHealth();
         }
-        else
+        else if (scaled.transform.localScale.x < (2.9f - currentFood))
         {
             scaled.transform.localScale = new Vector3(scaled.transform.localScale.x + currentFood, scaled.transform.localScale.y, scaled.transform.localScale.z);
+        }
+        else
+        {
+            Debug.Log("FOOD ERROR");
         }
     }
 
