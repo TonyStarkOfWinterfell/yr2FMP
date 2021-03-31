@@ -15,6 +15,7 @@ public class Upgrades : MonoBehaviour
     public GameObject sellHolder;
     public DropNDrag sell;
 
+    //dont send to a variable that doesnt exist. get the new spawned variable to call from a static holder
 
     private int U1 = 0;
     private int U2 = 0;
@@ -42,7 +43,6 @@ public class Upgrades : MonoBehaviour
     private int U24 = 0;
     private int U25 = 0;
 
-    //new******** update-> for each gameobject that exists with tag(switch) then change the script value to upgrde
     private void Start()
     {
         manageHolder = GameObject.FindGameObjectWithTag("Manager");

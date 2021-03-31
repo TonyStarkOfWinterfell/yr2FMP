@@ -46,12 +46,23 @@ public class ButtonScript : MonoBehaviour
     public AudioClip buttonClick;
     AudioSource buttonSource;
 
+    public GameObject slider;
+    public GameObject resetHolder;
+    public RectTransform resetPos;
+    public RectTransform sliderPos;
+
 
     public void Start()
     {
         anim = GetComponent<Animator>();
 
         buttonSource = buttonHolder.GetComponent<AudioSource>();
+
+        slider = GameObject.FindGameObjectWithTag("Slider");
+        resetHolder = GameObject.FindGameObjectWithTag("ResetSlide");
+        resetPos = resetHolder.GetComponent<RectTransform>();
+        sliderPos = slider.GetComponent<RectTransform>();
+
 
         maxVal = 150;
         maxCats = 5;
@@ -67,6 +78,8 @@ public class ButtonScript : MonoBehaviour
 
     public void Update()
     {
+        sliderPos = resetPos;
+
         SetFill(currentVal);
 
         if (Input.GetKeyDown(KeyCode.Space))

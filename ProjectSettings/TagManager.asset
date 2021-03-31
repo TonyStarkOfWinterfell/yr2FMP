@@ -21,6 +21,8 @@ TagManager:
   - ResetFood
   - ShopS
   - FoodS
+  - ResetSlide
+  - Slider
   layers:
   - Default
   - TransparentFX

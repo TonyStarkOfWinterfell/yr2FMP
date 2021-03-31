@@ -86,8 +86,7 @@ public class Health : MonoBehaviour
     }
 
     public void HealFood()
-    {
-        Debug.Log("Started food heal shiiiii");
+    {       
         if (scaled.transform.localScale.x >= (2.9f - currentFood))
         {
             SetMaxHealth();

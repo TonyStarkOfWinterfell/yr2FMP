@@ -106,7 +106,6 @@ public class DropNDrag : MonoBehaviour
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
                                                   
-
         if (thisGameobjectName == "P" && collisionGameobjectName != "F")
         {            
             shopSource.PlayOneShot(shopBell);
@@ -122,9 +121,7 @@ public class DropNDrag : MonoBehaviour
         //also all names need to be 1 letter/number with "_Object"        
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
-
-
-
+                
         if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
         {
             buttonScript.currentCats--;
@@ -132,9 +129,7 @@ public class DropNDrag : MonoBehaviour
             Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
             mouseButtonReleased = false;
             Destroy(collision.gameObject);
-            Destroy(gameObject);
-            
-
+            Destroy(gameObject);            
         }
         else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
         {
@@ -206,6 +201,12 @@ public class DropNDrag : MonoBehaviour
             Destroy(gameObject);
 
         }
+
+
+
+
+
+
 
 
 
@@ -299,14 +300,12 @@ public class DropNDrag : MonoBehaviour
 
                 money3.UpdateCoins();
 
-                Destroy(gameObject);
-                //destroying obj then using it
+                Destroy(gameObject);               
             }
         }       
         else if (mouseButtonReleased && collisionGameobjectName == "V")
         {                       
-            mouseButtonReleased = false;
-
+            mouseButtonReleased = false;           
             if (thisGameobjectName == "F")
             {
                 sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
@@ -318,7 +317,7 @@ public class DropNDrag : MonoBehaviour
 
                 if (localHealth.scaled.transform.localScale.x <= 0)
                 {
-                    if (money3.coins >= 100)
+                    if (money3.coins >= 500)
                     {
                         switch (gameObject.tag)
                         {
@@ -350,7 +349,7 @@ public class DropNDrag : MonoBehaviour
                                 Debug.Log("not sure what to do with this right now lol");
                                 break;
                         }
-                        money3.coins -= 100;
+                        money3.coins -= 500;
                         money3.UpdateCoins();
 
                         Destroy(gameObject);
@@ -363,12 +362,17 @@ public class DropNDrag : MonoBehaviour
             mouseButtonReleased = false;
             localHealth = collision.gameObject.GetComponent<Health>();
 
-            localHealth.currentFood = 1.45f;
+            if (money3.coins >= 100)
+            {
+                localHealth.currentFood = 0.7f;
 
-            foodSource.PlayOneShot(foodMunch);
+                foodSource.PlayOneShot(foodMunch);
 
-            localHealth.HealFood();
-            Debug.Log("dragged food on cat");
+                localHealth.HealFood();
+
+                money3.coins -= 100;
+                money3.UpdateCoins();
+            }            
         }
     }
 
