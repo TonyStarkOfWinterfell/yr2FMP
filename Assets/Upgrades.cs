@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
@@ -14,6 +15,9 @@ public class Upgrades : MonoBehaviour
 
     public GameObject sellHolder;
     public DropNDrag sell;
+
+    public GameObject currentButton;
+    public Image img;
 
     //dont send to a variable that doesnt exist. get the new spawned variable to call from a static holder
 
@@ -72,7 +76,12 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 15;
                 money.UpdateCoins();
                 
-                mainClick.currentClick = 15;                
+                mainClick.currentClick = 15;
+
+                currentButton = EventSystem.current.currentSelectedGameObject; 
+                Debug.Log("called: " + currentButton);
+                img = currentButton.GetComponent<Image>();
+                img.color = new Color(176f, 176f, 176f, 1f); // test whether setting it inv can make a visual difference
             }
             else
             {
@@ -92,7 +101,10 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentFPS = 15;
-                mainClick.ifAuto = true;                
+                mainClick.ifAuto = true;
+
+                img = this.gameObject.GetComponent<Image>();
+                img.color = new Color(176f, 176f, 176f, 1f);
             }
             else
             {
@@ -111,6 +123,9 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 kitty.doublePassive = true;
+
+                img = this.gameObject.GetComponent<Image>();
+                img.color = new Color(176f, 176f, 176f, 1f);
             }
             else
             {
@@ -129,6 +144,9 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentClick = 30;
+
+                img = this.gameObject.GetComponent<Image>();
+                img.color = new Color(176f, 176f, 176f, 1f);
             }
             else
             {
@@ -147,6 +165,9 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentFPS = 35;
+
+                img = this.gameObject.GetComponent<Image>();
+                img.color = new Color(176f, 176f, 176f, 1f);
             }
             else
             {

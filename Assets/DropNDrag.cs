@@ -60,9 +60,6 @@ public class DropNDrag : MonoBehaviour
         shopHolder = GameObject.FindGameObjectWithTag("ShopS");
         shopBell = Resources.Load<AudioClip>("hoverShop");
         shopSource = shopHolder.GetComponent<AudioSource>();
-        
-        //shopSource.PlayOneShot(shopBell);
-
     }
     public void OnMouseDown()
     {

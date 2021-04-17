@@ -15,6 +15,9 @@ public class Health : MonoBehaviour
 
     public Kitty kitty;
 
+    public GameObject catSprite;
+    public SpriteRenderer rend;
+
 
     public void Start()
     {
@@ -24,6 +27,10 @@ public class Health : MonoBehaviour
         currentFood = 0.5f;
 
         StartCoroutine(Scale());
+
+        catSprite = transform.Find("CSprite").gameObject;
+        rend = catSprite.GetComponent<SpriteRenderer>();
+        rend.color = new Color(255f, 255f, 255f, 1f);
 
         switch (gameObject.tag)
         {
@@ -62,15 +69,34 @@ public class Health : MonoBehaviour
 
     public void Update()
     {
+        //dead
         if (scaled.transform.localScale.x <= 0)
         {
             kitty.isDead = true;
+          
+            //disable !! 
+            rend.color = new Color(0f, 236f, 0f, 1f);
+            //find way to slow animation speed
         }
+        //close
+        else if (scaled.transform.localScale.x > 0 && scaled.transform.localScale.x <= 0.8)
+        {
+            
+
+            //set ! active
+            rend.color = new Color(255f, 255f, 255f, 1f);
+        }
+        //alive
         else
         {
             kitty.isDead = false;
-
+            
+            //disable !!
+            rend.color = new Color(255f, 255f, 255f, 1f);
         }
+
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SetMaxHealth();

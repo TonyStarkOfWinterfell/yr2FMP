@@ -151,6 +151,8 @@ MonoBehaviour:
   currentFood: 0
   scaled: {fileID: 0}
   kitty: {fileID: 0}
+  catSprite: {fileID: 0}
+  rend: {fileID: 0}
 --- !u!1 &3136006605234002224
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +392,7 @@ GameObject:
   - component: {fileID: 5903824723963961021}
   - component: {fileID: 84358918}
   m_Layer: 0
-  m_Name: CSprite9
+  m_Name: CSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

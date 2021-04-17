@@ -51,6 +51,12 @@ public class ButtonScript : MonoBehaviour
     public RectTransform resetPos;
     public RectTransform sliderPos;
 
+    public bool mergeCheck;
+
+    public GameObject popUpHolder;
+    public PopUpSys popUpScript;
+    
+    //update. if false > if current cats >= 2 debug.Log replace for set value in other script > set can merge true
 
     public void Start()
     {
@@ -72,8 +78,14 @@ public class ButtonScript : MonoBehaviour
 
         currentVal = 0;
         currentCats = 0;
-        currentClick = 10; //15 clicks to fill
+        currentClick = 10;
         currentSpawn = lvl1;
+
+        mergeCheck = false;
+
+        popUpHolder = GameObject.FindGameObjectWithTag("Manager");
+        popUpScript = popUpHolder.GetComponent<PopUpSys>();
+
     }
 
     public void Update()
@@ -90,6 +102,16 @@ public class ButtonScript : MonoBehaviour
         if (ifAuto == true)
         {
             currentVal += currentFPS * Time.deltaTime;
+        }
+
+        if (mergeCheck == false)
+        {
+            if(currentCats >= 2)
+            {
+                popUpScript.hasMerged = true;
+                
+                mergeCheck = true;
+            }
         }
     }
 

@@ -11,10 +11,10 @@ public class PopUpSys : MonoBehaviour
 
     public string currentOK;
 
-    public bool hasMerged;                      //potential problem with the object being disabled and trying to perform tasks
-                                               //fix by putting script onto seperate manager game object  (try and do this before calling methods from other scripts
-    public bool mergeOK;
-    public bool hasMoney;
+    public bool hasMerged;                     
+                                               
+    public bool mergeOK;            
+    public bool hasMoney;                    //change from button to on mouse down for sfx
 
     public bool foodOK;
     public bool isSick;
@@ -22,6 +22,10 @@ public class PopUpSys : MonoBehaviour
     public bool mergeBreak;
     public bool upgradeBreak;
     public bool vetBreak;
+
+    public GameObject sfxHolder;
+    public AudioClip sfxClip;
+    AudioSource sfxSource;
 
     public void Start()
     {
@@ -39,6 +43,8 @@ public class PopUpSys : MonoBehaviour
         mergeBreak = false;
         upgradeBreak = false;
         vetBreak = false;
+
+        sfxSource = sfxHolder.GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -105,8 +111,8 @@ public class PopUpSys : MonoBehaviour
     }
 
     public void OK()
-    {
-        //need to add enter code once i find it
+    {      
+        sfxSource.PlayOneShot(sfxClip);
         //can add you win here or last upgrade
 
         switch (currentOK)

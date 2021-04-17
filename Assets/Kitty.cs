@@ -21,6 +21,8 @@ public class Kitty : MonoBehaviour
 
     public bool doublePassive = false;
 
+    
+
     private void Start()
     {
         manageHolder2 = GameObject.FindGameObjectWithTag("Manager");
@@ -29,8 +31,7 @@ public class Kitty : MonoBehaviour
         //health = gameObject.GetComponent<Health>();
 
         isDead = false;
-        //on thingy spawned
-
+        
         switch (gameObject.tag)
         {
             case "K1":
