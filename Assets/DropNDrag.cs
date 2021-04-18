@@ -36,6 +36,8 @@ public class DropNDrag : MonoBehaviour
 
     public bool sellDouble = false;
 
+    public bool isDead;
+
     private void Start()
     {
         spawnHolder = GameObject.FindGameObjectWithTag("SPHolder");
@@ -60,6 +62,8 @@ public class DropNDrag : MonoBehaviour
         shopHolder = GameObject.FindGameObjectWithTag("ShopS");
         shopBell = Resources.Load<AudioClip>("hoverShop");
         shopSource = shopHolder.GetComponent<AudioSource>();
+
+        isDead = false;
     }
     public void OnMouseDown()
     {
@@ -118,259 +122,263 @@ public class DropNDrag : MonoBehaviour
         //also all names need to be 1 letter/number with "_Object"        
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
-                
-        if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
+
+        DropNDrag otherDrag = collision.GetComponent<DropNDrag>();
+
+        if (isDead == false && otherDrag.isDead == false)
         {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);            
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "4" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "5" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "6" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "7" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-        else if (mouseButtonReleased && thisGameobjectName == "8" && thisGameobjectName == collisionGameobjectName)
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
-            Instantiate(Resources.Load("9_Object"), transform.position, Quaternion.identity);
-            mouseButtonReleased = false;
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-        }
-
-
-
-
-
-
-
-
-
-
-        else if (mouseButtonReleased && collisionGameobjectName == "P")
-        {
-            buttonScript.currentCats--;
-            buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;            
-            mouseButtonReleased = false;
-
-            if (thisGameobjectName == "F")
+            if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
             {
-                //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
-                food.transform.position = resetFood.transform.position;
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
             }
-            else
+            else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
             {
-                if (sellDouble == true)
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+            else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName)
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+            else if (mouseButtonReleased && thisGameobjectName == "4" && thisGameobjectName == collisionGameobjectName)
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+            else if (mouseButtonReleased && thisGameobjectName == "5" && thisGameobjectName == collisionGameobjectName)
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+            else if (mouseButtonReleased && thisGameobjectName == "6" && thisGameobjectName == collisionGameobjectName)
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+            else if (mouseButtonReleased && thisGameobjectName == "7" && thisGameobjectName == collisionGameobjectName)
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+            else if (mouseButtonReleased && thisGameobjectName == "8" && thisGameobjectName == collisionGameobjectName)
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                Instantiate(Resources.Load("9_Object"), transform.position, Quaternion.identity);
+                mouseButtonReleased = false;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+
+            }
+
+
+
+
+
+            else if (mouseButtonReleased && collisionGameobjectName == "P")
+            {
+                buttonScript.currentCats--;
+                buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
+                mouseButtonReleased = false;
+
+                if (thisGameobjectName == "F")
                 {
-                    switch (gameObject.tag)
-                    {
-                        case "K1":
-                            money3.coins += 1;
-                            break;
-                        case "K2":
-                            money3.coins += 16 * 2;
-                            break;
-                        case "K3":
-                            money3.coins += 81 * 2;
-                            break;
-                        case "K4":
-                            money3.coins += 256 * 2;
-                            break;
-                        case "K5":
-                            money3.coins += 625 * 2;
-                            break;
-                        case "K6":
-                            money3.coins += 1296 * 2;
-                            break;
-                        case "K7":
-                            money3.coins += 2400 * 2;
-                            break;
-                        case "K8":
-                            money3.coins += 4850 * 2;
-                            break;
-                        case "K9":
-                            money3.coins += 10000 * 2;
-                            break;
-                        default:
-                            Debug.Log("not sure what to do with this right now lol");
-                            break;
-                    }
+                    //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
+                    food.transform.position = resetFood.transform.position;
                 }
                 else
                 {
-                    switch (gameObject.tag)
-                    {
-                        case "K1":
-                            money3.coins += 1;
-                            break;
-                        case "K2":
-                            money3.coins += 16;
-                            break;
-                        case "K3":
-                            money3.coins += 81;
-                            break;
-                        case "K4":
-                            money3.coins += 256;
-                            break;
-                        case "K5":
-                            money3.coins += 625;
-                            break;
-                        case "K6":
-                            money3.coins += 1296;
-                            break;
-                        case "K7":
-                            money3.coins += 2400;
-                            break;
-                        case "K8":
-                            money3.coins += 4850;
-                            break;
-                        case "K9":
-                            money3.coins += 10000;
-                            break;
-                        default:
-                            Debug.Log("not sure what to do with this right now lol");
-                            break;
-                    }
-                }
-
-
-                money3.UpdateCoins();
-
-                Destroy(gameObject);               
-            }
-        }       
-        else if (mouseButtonReleased && collisionGameobjectName == "V")
-        {                       
-            mouseButtonReleased = false;           
-            if (thisGameobjectName == "F")
-            {
-                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
-                food.transform.position = resetFood.transform.position;
-            }
-            else
-            {
-                localHealth = this.gameObject.GetComponent<Health>();
-
-                if (localHealth.scaled.transform.localScale.x <= 0)
-                {
-                    if (money3.coins >= 500)
+                    if (sellDouble == true)
                     {
                         switch (gameObject.tag)
                         {
                             case "K1":
-                                Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 1;
                                 break;
                             case "K2":
-                                Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 16 * 2;
                                 break;
                             case "K3":
-                                Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 81 * 2;
                                 break;
                             case "K4":
-                                Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 256 * 2;
                                 break;
                             case "K5":
-                                Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 625 * 2;
                                 break;
                             case "K6":
-                                Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 1296 * 2;
                                 break;
                             case "K7":
-                                Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 2400 * 2;
                                 break;
                             case "K8":
-                                Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                                money3.coins += 4850 * 2;
+                                break;
+                            case "K9":
+                                money3.coins += 10000 * 2;
                                 break;
                             default:
                                 Debug.Log("not sure what to do with this right now lol");
                                 break;
                         }
-                        money3.coins -= 500;
-                        money3.UpdateCoins();
-
-                        Destroy(gameObject);
                     }
-                }                                
-            }           
-        }        
-        else if (mouseButtonReleased && thisGameobjectName == "F" && collisionGameobjectName != "P" && collisionGameobjectName != "V")
-        {
-            mouseButtonReleased = false;
-            localHealth = collision.gameObject.GetComponent<Health>();
+                    else
+                    {
+                        switch (gameObject.tag)
+                        {
+                            case "K1":
+                                money3.coins += 1;
+                                break;
+                            case "K2":
+                                money3.coins += 16;
+                                break;
+                            case "K3":
+                                money3.coins += 81;
+                                break;
+                            case "K4":
+                                money3.coins += 256;
+                                break;
+                            case "K5":
+                                money3.coins += 625;
+                                break;
+                            case "K6":
+                                money3.coins += 1296;
+                                break;
+                            case "K7":
+                                money3.coins += 2400;
+                                break;
+                            case "K8":
+                                money3.coins += 4850;
+                                break;
+                            case "K9":
+                                money3.coins += 10000;
+                                break;
+                            default:
+                                Debug.Log("not sure what to do with this right now lol");
+                                break;
+                        }
+                    }
 
-            if (money3.coins >= 100)
+
+                    money3.UpdateCoins();
+
+                    Destroy(gameObject);
+                }
+            }
+
+            else if (mouseButtonReleased && thisGameobjectName == "F" && collisionGameobjectName != "P" && collisionGameobjectName != "V")
             {
-                localHealth.currentFood = 0.7f;
+                mouseButtonReleased = false;
+                localHealth = collision.gameObject.GetComponent<Health>();
 
-                foodSource.PlayOneShot(foodMunch);
+                if (money3.coins >= 100)
+                {
+                    localHealth.currentFood = 0.7f;
 
-                localHealth.HealFood();
+                    foodSource.PlayOneShot(foodMunch);
 
-                money3.coins -= 100;
-                money3.UpdateCoins();
-            }            
+                    localHealth.HealFood();
+
+                    money3.coins -= 100;
+                    money3.UpdateCoins();
+                }
+            }
         }
+        else
+        {
+            if (mouseButtonReleased && collisionGameobjectName == "V")
+            {
+                mouseButtonReleased = false;
+                if (thisGameobjectName == "F")
+                {
+                    sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
+                    food.transform.position = resetFood.transform.position;
+                }
+                else
+                {
+                    localHealth = this.gameObject.GetComponent<Health>();
+
+                    if (localHealth.scaled.transform.localScale.x <= 0)
+                    {
+                        if (money3.coins >= 500)
+                        {
+                            switch (gameObject.tag)
+                            {
+                                case "K1":
+                                    Instantiate(Resources.Load("1_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K2":
+                                    Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K3":
+                                    Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K4":
+                                    Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K5":
+                                    Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K6":
+                                    Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K7":
+                                    Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                case "K8":
+                                    Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
+                                    break;
+                                default:
+                                    Debug.Log("not sure what to do with this right now lol");
+                                    break;
+                            }
+                            money3.coins -= 500;
+                            money3.UpdateCoins();
+
+                            Destroy(gameObject);
+                        }
+                    }
+                }
+            }
+        }        
     }
 
     IEnumerator Wait()

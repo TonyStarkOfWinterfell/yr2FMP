@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     public Transform scaled;
 
     public Kitty kitty;
+    public DropNDrag dropNDrag;
 
     public GameObject catSprite;
     public SpriteRenderer rend;
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
     {
         scaled = transform.Find("HealthBar/FillHold");
         kitty = gameObject.GetComponent<Kitty>();
+        dropNDrag = gameObject.GetComponent<DropNDrag>();
 
         currentFood = 0.5f;
 
@@ -73,6 +75,7 @@ public class Health : MonoBehaviour
         if (scaled.transform.localScale.x <= 0)
         {
             kitty.isDead = true;
+            dropNDrag.isDead = true;
           
             //disable !! 
             rend.color = new Color(0f, 236f, 0f, 1f);
@@ -81,7 +84,7 @@ public class Health : MonoBehaviour
         //close
         else if (scaled.transform.localScale.x > 0 && scaled.transform.localScale.x <= 0.8)
         {
-            
+            //might need to add is dead false here too vvvv
 
             //set ! active
             rend.color = new Color(255f, 255f, 255f, 1f);
@@ -90,7 +93,9 @@ public class Health : MonoBehaviour
         else
         {
             kitty.isDead = false;
-            
+            dropNDrag.isDead = false;
+
+
             //disable !!
             rend.color = new Color(255f, 255f, 255f, 1f);
         }
