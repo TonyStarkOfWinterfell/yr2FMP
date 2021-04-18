@@ -38,6 +38,8 @@ public class DropNDrag : MonoBehaviour
 
     public bool isDead;
 
+    public GameObject healthBar;
+
     private void Start()
     {
         spawnHolder = GameObject.FindGameObjectWithTag("SPHolder");
@@ -52,7 +54,7 @@ public class DropNDrag : MonoBehaviour
         sprite = food.gameObject.GetComponent<SpriteRenderer>();
         
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f); 
-        //future problem with cats autospawning and reseting mid drag VVVVVVV
+        //future problem with cats autospawning and reseting mid drag VVVVVVV fix it by calling it in the start of another script that doesnt respawns
         food.transform.position = resetFood.transform.position;
 
         foodHolder = GameObject.FindGameObjectWithTag("FoodS");
@@ -64,7 +66,30 @@ public class DropNDrag : MonoBehaviour
         shopSource = shopHolder.GetComponent<AudioSource>();
 
         isDead = false;
+
+        if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
+        {
+            healthBar = transform.Find("HealthBar").gameObject;
+            healthBar.SetActive(false);
+        }
+        
     }
+
+    public void OnMouseOver()
+    {
+        if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
+        {
+            healthBar.SetActive(true);
+        }
+    }
+    public void OnMouseExit()
+    {
+        if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
+        {
+            healthBar.SetActive(false);
+        }        
+    }
+
     public void OnMouseDown()
     {
         if(this.gameObject != shop && this.gameObject != vet)
@@ -93,6 +118,11 @@ public class DropNDrag : MonoBehaviour
 
     public void OnMouseUp()
     {
+        if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop")
+        {
+            StartCoroutine(Wait2());
+        }        
+        
         mouseButtonReleased = true;
         StartCoroutine(Wait());
     }
@@ -387,6 +417,20 @@ public class DropNDrag : MonoBehaviour
 
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         food.transform.position = resetFood.transform.position;
+    }
+
+    IEnumerator Wait2()
+    {
+        yield return new WaitForSeconds(0.05f);
+
+        if (gameObject.transform.position.x > 4f)
+        {
+            gameObject.transform.position = new Vector3(3.25f, gameObject.transform.position.y, 0);
+        }
+        if (gameObject.transform.position.x < -2.85f)
+        {
+            gameObject.transform.position = new Vector3(-2.5f, gameObject.transform.position.y, 0);
+        }
     }
 }
 

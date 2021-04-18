@@ -354,7 +354,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 291089265cff79a46b12f9e6c575ea24, type: 3}
-  m_Color: {r: 0, g: 0.9245283, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -499,6 +499,7 @@ MonoBehaviour:
   shopHolder: {fileID: 0}
   shopBell: {fileID: 0}
   sellDouble: 0
+  isDead: 0
 --- !u!114 &-9020477889199125930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +540,7 @@ MonoBehaviour:
   currentFood: 0
   scaled: {fileID: 0}
   kitty: {fileID: 0}
+  dropNDrag: {fileID: 0}
   catSprite: {fileID: 0}
   rend: {fileID: 0}
 --- !u!1 &8796607718496100253
