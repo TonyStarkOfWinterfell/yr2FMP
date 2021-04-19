@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1880350314268021251}
   - component: {fileID: 2160979223155214875}
   - component: {fileID: 4395526956273781010}
+  - component: {fileID: 3446141998298519119}
   m_Layer: 0
   m_Name: 8_Object
   m_TagString: K8
@@ -193,6 +194,8 @@ MonoBehaviour:
   shopHolder: {fileID: 0}
   shopBell: {fileID: 0}
   sellDouble: 0
+  isDead: 0
+  healthBar: {fileID: 0}
 --- !u!114 &2160979223155214875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,8 +236,28 @@ MonoBehaviour:
   currentFood: 0
   scaled: {fileID: 0}
   kitty: {fileID: 0}
+  dropNDrag: {fileID: 0}
   catSprite: {fileID: 0}
   rend: {fileID: 0}
+--- !u!114 &3446141998298519119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335882016435463912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deff5f5263c9de44802cf3fb57a7f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startWaitTime: 0
+  moveSpot: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
 --- !u!1 &2876667823235644919
 GameObject:
   m_ObjectHideFlags: 0

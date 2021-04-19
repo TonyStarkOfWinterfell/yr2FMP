@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5794815297388475164}
   - component: {fileID: -5778914051174708997}
   - component: {fileID: 5916653213308567003}
+  - component: {fileID: 1724475340815806839}
   m_Layer: 0
   m_Name: 6_Object
   m_TagString: K6
@@ -223,6 +224,8 @@ MonoBehaviour:
   shopHolder: {fileID: 0}
   shopBell: {fileID: 0}
   sellDouble: 0
+  isDead: 0
+  healthBar: {fileID: 0}
 --- !u!114 &-5778914051174708997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +266,28 @@ MonoBehaviour:
   currentFood: 0
   scaled: {fileID: 0}
   kitty: {fileID: 0}
+  dropNDrag: {fileID: 0}
   catSprite: {fileID: 0}
   rend: {fileID: 0}
+--- !u!114 &1724475340815806839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704531336606023895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deff5f5263c9de44802cf3fb57a7f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startWaitTime: 0
+  moveSpot: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
 --- !u!1 &4023644760559779964
 GameObject:
   m_ObjectHideFlags: 0
