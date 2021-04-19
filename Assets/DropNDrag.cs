@@ -40,8 +40,20 @@ public class DropNDrag : MonoBehaviour
 
     public GameObject healthBar;
 
+    public GameObject shopSprite;
+    public Animator shopAnim;
+    private string currentState;
+    const string SHOPIDLE = "ShopIdle";
+    const string SHOPJIGGLE = "ShopJiggle";
+
+
     private void Start()
     {
+        if (gameObject.tag == "VetShop" || gameObject.tag == "PetShop")
+        {
+            shopSprite = transform.Find("Image").gameObject;
+            shopAnim = shopSprite.GetComponent<Animator>();
+        }
         spawnHolder = GameObject.FindGameObjectWithTag("SPHolder");
         buttonScript = spawnHolder.GetComponent<ButtonScript>();
 
@@ -72,7 +84,6 @@ public class DropNDrag : MonoBehaviour
             healthBar = transform.Find("HealthBar").gameObject;
             healthBar.SetActive(false);
         }
-        
     }
 
     public void OnMouseOver()
@@ -136,10 +147,40 @@ public class DropNDrag : MonoBehaviour
         //also all names need to be 1 letter/number with "_Object"        
         thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
         collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
-                                                  
-        if (thisGameobjectName == "P" && collisionGameobjectName != "F")
+
+        DropNDrag localDrag = collision.GetComponent<DropNDrag>();
+
+        if (thisGameobjectName == "P" && collisionGameobjectName != "F" && localDrag.isDead == false)
         {            
             shopSource.PlayOneShot(shopBell);
+            shopAnim.Play(SHOPJIGGLE);
+        }
+        if (thisGameobjectName == "V" && collisionGameobjectName != "F" && localDrag.isDead == true)
+        {
+            shopSource.PlayOneShot(shopBell);
+            shopAnim.Play(SHOPJIGGLE);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        string thisGameobjectName;
+        string collisionGameobjectName;
+
+        //give the value of collision object to the first character only VVV
+        //also all names need to be 1 letter/number with "_Object"        
+        thisGameobjectName = gameObject.name.Substring(0, name.IndexOf("_"));
+        collisionGameobjectName = collision.gameObject.name.Substring(0, name.IndexOf("_"));
+
+        DropNDrag localDrag2 = collision.GetComponent<DropNDrag>();
+
+        if (thisGameobjectName == "P" && collisionGameobjectName != "F")
+        {
+            shopAnim.Play(SHOPIDLE);
+        }
+        if (thisGameobjectName == "V" && collisionGameobjectName != "F" && localDrag2.isDead == true)
+        {
+            shopAnim.Play(SHOPIDLE);
         }
     }
 
@@ -247,6 +288,8 @@ public class DropNDrag : MonoBehaviour
                 buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                 mouseButtonReleased = false;
 
+                otherDrag.shopAnim.Play(SHOPIDLE);
+
                 if (thisGameobjectName == "F")
                 {
                     //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
@@ -353,7 +396,7 @@ public class DropNDrag : MonoBehaviour
             }
         }
         else
-        {
+        {            
             if (mouseButtonReleased && collisionGameobjectName == "V")
             {
                 mouseButtonReleased = false;
@@ -365,7 +408,7 @@ public class DropNDrag : MonoBehaviour
                 else
                 {
                     localHealth = this.gameObject.GetComponent<Health>();
-
+                    otherDrag.shopAnim.Play(SHOPIDLE);
                     if (localHealth.scaled.transform.localScale.x <= 0)
                     {
                         if (money3.coins >= 500)
@@ -431,6 +474,16 @@ public class DropNDrag : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(-2.5f, gameObject.transform.position.y, 0);
         }
+    }
+
+    void ChangeAnimationState(string newState)
+    {
+        //stop same animation interupting
+        if (currentState == newState) return;
+
+        shopAnim.Play(newState);
+
+        currentState = newState;
     }
 }
 

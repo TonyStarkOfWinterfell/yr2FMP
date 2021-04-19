@@ -19,6 +19,8 @@ public class Health : MonoBehaviour
     public GameObject catSprite;
     public SpriteRenderer rend;
 
+    public GameObject warnSprite;
+    public SpriteRenderer warnRend;
 
     public void Start()
     {
@@ -33,6 +35,10 @@ public class Health : MonoBehaviour
         catSprite = transform.Find("CSprite").gameObject;
         rend = catSprite.GetComponent<SpriteRenderer>();
         rend.color = new Color(255f, 255f, 255f, 1f);
+
+        warnSprite = transform.Find("!").gameObject;
+        warnRend = warnSprite.GetComponent<SpriteRenderer>();
+        warnRend.color = new Color(255f, 255f, 255f, 0f);
 
         switch (gameObject.tag)
         {
@@ -76,17 +82,15 @@ public class Health : MonoBehaviour
         {
             kitty.isDead = true;
             dropNDrag.isDead = true;
-          
-            //disable !! 
+
+            warnRend.color = new Color(255f, 255f, 255f, 0f);
             rend.color = new Color(0f, 236f, 0f, 1f);
             //find way to slow animation speed
         }
         //close
         else if (scaled.transform.localScale.x > 0 && scaled.transform.localScale.x <= 0.8)
         {
-            //might need to add is dead false here too vvvv
-
-            //set ! active
+            warnRend.color = new Color(255f, 255f, 255f, 1f);
             rend.color = new Color(255f, 255f, 255f, 1f);
         }
         //alive
@@ -94,9 +98,8 @@ public class Health : MonoBehaviour
         {
             kitty.isDead = false;
             dropNDrag.isDead = false;
-
-
-            //disable !!
+            
+            warnRend.color = new Color(255f, 255f, 255f, 0f);
             rend.color = new Color(255f, 255f, 255f, 1f);
         }
 
