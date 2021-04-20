@@ -17,8 +17,9 @@ public class Upgrades : MonoBehaviour
     public DropNDrag sell;
 
     public GameObject currentButton;
-    public Image img;
-
+    public GameObject buttonBlack;
+    public Image blackImage;
+    //public GameObject testButt;
     //dont send to a variable that doesnt exist. get the new spawned variable to call from a static holder
 
     private int U1 = 0;
@@ -72,6 +73,7 @@ public class Upgrades : MonoBehaviour
         {
             if (money.coins >= 15)
             {
+                //testButt = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
                 U1 = 1;
                 money.coins -= 15;
                 money.UpdateCoins();
@@ -79,9 +81,10 @@ public class Upgrades : MonoBehaviour
                 mainClick.currentClick = 15;
 
                 currentButton = EventSystem.current.currentSelectedGameObject; 
-                Debug.Log("called: " + currentButton);
-                img = currentButton.GetComponent<Image>();
-                img.color = new Color(176f, 176f, 176f, 1f); // test whether setting it inv can make a visual difference
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -103,8 +106,11 @@ public class Upgrades : MonoBehaviour
                 mainClick.currentFPS = 15;
                 mainClick.ifAuto = true;
 
-                img = this.gameObject.GetComponent<Image>();
-                img.color = new Color(176f, 176f, 176f, 1f);
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -124,8 +130,11 @@ public class Upgrades : MonoBehaviour
 
                 kitty.doublePassive = true;
 
-                img = this.gameObject.GetComponent<Image>();
-                img.color = new Color(176f, 176f, 176f, 1f);
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -145,8 +154,11 @@ public class Upgrades : MonoBehaviour
 
                 mainClick.currentClick = 30;
 
-                img = this.gameObject.GetComponent<Image>();
-                img.color = new Color(176f, 176f, 176f, 1f);
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -166,8 +178,11 @@ public class Upgrades : MonoBehaviour
 
                 mainClick.currentFPS = 35;
 
-                img = this.gameObject.GetComponent<Image>();
-                img.color = new Color(176f, 176f, 176f, 1f);
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -187,6 +202,12 @@ public class Upgrades : MonoBehaviour
 
                 mainClick.maxCats = 6;
                 mainClick.buttonText.text = mainClick.currentCats + "/" + mainClick.maxCats;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -205,6 +226,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 sell.sellDouble = true;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -222,7 +249,11 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 700;
                 money.UpdateCoins();
 
+                currentButton = EventSystem.current.currentSelectedGameObject;
 
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -241,6 +272,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentFPS = 75;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -257,6 +294,12 @@ public class Upgrades : MonoBehaviour
                 U10 = 1;
                 money.coins -= 750;
                 money.UpdateCoins();
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -275,6 +318,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl2;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -292,7 +341,11 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 1300;
                 money.UpdateCoins();
 
-                
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -310,7 +363,11 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 1300;
                 money.UpdateCoins();
 
-                
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -329,6 +386,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentFPS = 100;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -348,6 +411,12 @@ public class Upgrades : MonoBehaviour
 
                 mainClick.maxCats = 9;
                 mainClick.buttonText.text = mainClick.currentCats + "/" + mainClick.maxCats;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -366,6 +435,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl3;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -383,7 +458,11 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 3000;
                 money.UpdateCoins();
 
-                
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -401,7 +480,11 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 3500;
                 money.UpdateCoins();
 
-                
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -419,7 +502,11 @@ public class Upgrades : MonoBehaviour
                 money.coins -= 5000;
                 money.UpdateCoins();
 
-                
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -438,6 +525,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl4;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -456,6 +549,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl5;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -474,6 +573,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl6;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -492,6 +597,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl7;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -510,6 +621,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl8;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {
@@ -528,6 +645,12 @@ public class Upgrades : MonoBehaviour
                 money.UpdateCoins();
 
                 mainClick.currentSpawn = mainClick.lvl9;
+
+                currentButton = EventSystem.current.currentSelectedGameObject;
+
+                buttonBlack = currentButton.transform.Find("Black").gameObject;
+                blackImage = buttonBlack.GetComponent<Image>();
+                blackImage.color = new Color(0f, 0f, 0f, 0.5f);
             }
             else
             {

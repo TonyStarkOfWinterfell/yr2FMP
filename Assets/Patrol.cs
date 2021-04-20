@@ -24,7 +24,7 @@ public class Patrol : MonoBehaviour
         maxX = 4.1f;
         minY = -4.5f;
         maxY = 3.25f;
-        speed = 1.2f;
+        speed = 0.6f;
 
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
