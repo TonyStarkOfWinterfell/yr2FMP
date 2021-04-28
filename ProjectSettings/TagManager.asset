@@ -25,6 +25,8 @@ TagManager:
   - Slider
   - VetShop
   - Move
+  - POP
+  - Canv
   layers:
   - Default
   - TransparentFX

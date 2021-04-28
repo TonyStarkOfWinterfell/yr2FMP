@@ -27,10 +27,19 @@ public class PopUpSys : MonoBehaviour
     public AudioClip sfxClip;
     AudioSource sfxSource;
 
+    public Pause pause;
+    public GameObject canvas;
+
     public void Start()
     {
+       
+        canvas = GameObject.FindGameObjectWithTag("Canv");
+        pause = canvas.GetComponent<Pause>();
+
+        pause.Paused();
+
         currentOK = "START";
-        popText = "WELCOME TO\nPAWSITIVELY PANDORA";
+        popText = "WELCOME TO\nPAWSITIVELY PURRFECT";
 
         hasMerged = false;
 
@@ -76,6 +85,7 @@ public class PopUpSys : MonoBehaviour
                 currentOK = "MERG1";
 
                 mergeBreak = true;
+                pause.Paused();
             }
         }
 
@@ -87,6 +97,7 @@ public class PopUpSys : MonoBehaviour
                 currentOK = "UPGRADE";
 
                 upgradeBreak = true;
+                pause.Paused();
             }
         }
 
@@ -98,6 +109,7 @@ public class PopUpSys : MonoBehaviour
                 currentOK = "VET";
 
                 vetBreak = true;
+                pause.Paused();
             }
         }
 
@@ -127,6 +139,7 @@ public class PopUpSys : MonoBehaviour
                 break;
             case "INTRO2":
                 popUpBox.SetActive(false);
+                pause.Resume();
                 break;
          //=====================\\         
             case "MERG1":
@@ -139,7 +152,8 @@ public class PopUpSys : MonoBehaviour
                 break;
             case "MERG3":
                 popUpBox.SetActive(false);
-                mergeOK = true;                
+                mergeOK = true;
+                pause.Resume();
                 break;
          //=====================\\     
             case "UPGRADE":
@@ -149,10 +163,12 @@ public class PopUpSys : MonoBehaviour
             case "FOOD":
                 popUpBox.SetActive(false);
                 foodOK = true;
+                pause.Resume();
                 break;               
          //=====================\\     
             case "VET":
                 popUpBox.SetActive(false);
+                pause.Resume();
                 break;
             default:
                 PopUp("eRR0r so\nme\nwhe\nre");
