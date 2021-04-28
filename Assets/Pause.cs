@@ -13,7 +13,7 @@ public class Pause : MonoBehaviour
         Paused();
     }
 
-    public void Update()
+    /*public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -26,7 +26,7 @@ public class Pause : MonoBehaviour
                 Paused();
             }
         }
-    }
+    }*/
 
 
     public void Resume()
