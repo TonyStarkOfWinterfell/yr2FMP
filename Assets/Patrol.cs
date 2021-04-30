@@ -8,37 +8,37 @@ public class Patrol : MonoBehaviour
     private float waitTime;
     public float startWaitTime;
 
-    public Transform moveSpot;
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
+    public List<Transform> moveSpots;
+    private int randomSpot;
+    
     
     void Start()
     {
-        startWaitTime = Random.Range(8f, 20f);
+        startWaitTime = Random.Range(1f, 5f);
         waitTime = startWaitTime;
 
-        moveSpot = GameObject.FindGameObjectWithTag("Move").transform;
-        minX = -2.8f;
-        maxX = 4.1f;
-        minY = -4.5f;
-        maxY = 3.25f;
-        speed = 0.6f;
+        speed = 5f;
 
-        moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        //moveSpots = GameObject.FindGameObjectWithTag("Move").transform;
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Move"))
+        {
+            moveSpots.Add(go.GetComponent<Transform>());
+        }
+
+
+        randomSpot = Random.Range(0, moveSpots.Count);
     }
 
    
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);    
+        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);    
         
-        if(Vector2.Distance(transform.position, moveSpot.position) < 0.2f)
+        if(Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f)
         {
             if(waitTime <= 0)
             {
-                moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+                randomSpot = Random.Range(0, moveSpots.Count); //count was length /// lsit<Transform> was Transform[]
                 waitTime = startWaitTime;
             }
             else
