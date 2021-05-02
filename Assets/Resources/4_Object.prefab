@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 7775515405227395057}
   - component: {fileID: -7340533639397867514}
   - component: {fileID: 704676801590999156}
-  - component: {fileID: 8584346019305545463}
+  - component: {fileID: 8346463498143787547}
   m_Layer: 0
   m_Name: 4_Object
   m_TagString: K4
@@ -277,6 +277,8 @@ MonoBehaviour:
   sellDouble: 0
   isDead: 0
   healthBar: {fileID: 0}
+  shopSprite: {fileID: 0}
+  shopAnim: {fileID: 0}
 --- !u!114 &-7340533639397867514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +322,9 @@ MonoBehaviour:
   dropNDrag: {fileID: 0}
   catSprite: {fileID: 0}
   rend: {fileID: 0}
---- !u!114 &8584346019305545463
+  warnSprite: {fileID: 0}
+  warnRend: {fileID: 0}
+--- !u!114 &8346463498143787547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,11 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   startWaitTime: 0
-  moveSpot: {fileID: 0}
-  minX: 0
-  maxX: 0
-  minY: 0
-  maxY: 0
+  moveSpots: []
 --- !u!1 &6151562267549985474
 GameObject:
   m_ObjectHideFlags: 0

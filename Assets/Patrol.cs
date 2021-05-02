@@ -14,10 +14,10 @@ public class Patrol : MonoBehaviour
     
     void Start()
     {
-        startWaitTime = Random.Range(1f, 5f);
+        startWaitTime = Random.Range(8f, 90f);
         waitTime = startWaitTime;
 
-        speed = 5f;
+        speed = 0.8f;
 
         //moveSpots = GameObject.FindGameObjectWithTag("Move").transform;
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Move"))

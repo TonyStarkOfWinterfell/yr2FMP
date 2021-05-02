@@ -155,7 +155,7 @@ public class ButtonScript : MonoBehaviour
 
     public void SpawnObject()
     {
-        Vector3 pos = centre + new Vector3(Random.Range(-2.5f, 3.25f), Random.Range(-size.y / 2, size.y / 2), 0);
+        Vector3 pos = centre + new Vector3(Random.Range(-2.5f, 3.25f), Random.Range(-size.y / 2, size.y / 2), 50);
         if (currentCats < maxCats)
         {
             //switch lvl1 with new varient called currentLvl;

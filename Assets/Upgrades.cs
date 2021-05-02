@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Upgrades : MonoBehaviour
 {
@@ -21,6 +23,9 @@ public class Upgrades : MonoBehaviour
     public Image blackImage;
     //public GameObject testButt;
     //dont send to a variable that doesnt exist. get the new spawned variable to call from a static holder
+
+    public GameObject scoreHolder;
+    public DontDestroy dontDestroy;
 
     private int U1 = 0;
     private int U2 = 0;
@@ -59,6 +64,9 @@ public class Upgrades : MonoBehaviour
 
         sellHolder = GameObject.FindGameObjectWithTag("PetShop");
         sell = sellHolder.GetComponent<DropNDrag>();
+
+        scoreHolder = GameObject.FindGameObjectWithTag("Cross");
+        dontDestroy = scoreHolder.gameObject.GetComponent<DontDestroy>();
     }
 
     public void AddMoney()
@@ -66,6 +74,13 @@ public class Upgrades : MonoBehaviour
         money.coins += 50;        
         money.UpdateCoins();
     }
+    /*
+    public void TestScor()
+    {
+        dontDestroy.currentMoney = money.coins;
+        Debug.Log("succc");
+        SceneManager.LoadScene("HighScore");
+    }*/
 
     public void UP1()
     {
@@ -651,6 +666,9 @@ public class Upgrades : MonoBehaviour
                 buttonBlack = currentButton.transform.Find("Black").gameObject;
                 blackImage = buttonBlack.GetComponent<Image>();
                 blackImage.color = new Color(0f, 0f, 0f, 0.5f);
+
+                dontDestroy.currentMoney = money.coins;                
+                SceneManager.LoadScene("HighScore");
             }
             else
             {

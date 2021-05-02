@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 187597785079053741}
   - component: {fileID: -9020477889199125930}
   - component: {fileID: 7727026180309484404}
-  - component: {fileID: 8571516537668085089}
+  - component: {fileID: 4865561101158402876}
   m_Layer: 0
   m_Name: 1_Object
   m_TagString: K1
@@ -550,7 +550,7 @@ MonoBehaviour:
   rend: {fileID: 0}
   warnSprite: {fileID: 0}
   warnRend: {fileID: 0}
---- !u!114 &8571516537668085089
+--- !u!114 &4865561101158402876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
