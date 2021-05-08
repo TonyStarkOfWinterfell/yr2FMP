@@ -17,6 +17,8 @@ public class HighScore : MonoBehaviour
         scoreHolder = GameObject.FindGameObjectWithTag("Cross");
         dontDestroy = scoreHolder.gameObject.GetComponent<DontDestroy>();
 
+        Cursor.visible = true;
+
         currentScore.text = "£" + dontDestroy.currentMoney; 
 
         if (dontDestroy.currentMoney > dontDestroy.highMoney)
