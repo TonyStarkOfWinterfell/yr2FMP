@@ -100,6 +100,8 @@ public class Upgrades : MonoBehaviour
                 buttonBlack = currentButton.transform.Find("Black").gameObject;
                 blackImage = buttonBlack.GetComponent<Image>();
                 blackImage.color = new Color(0f, 0f, 0f, 0.5f);
+
+                //destroy currentButoon;;
             }
             else
             {
