@@ -10,6 +10,8 @@ public class Patrol : MonoBehaviour
 
     public List<Transform> moveSpots;
     private int randomSpot;
+
+    public bool refresh = false;
     
     
     void Start()
@@ -32,19 +34,28 @@ public class Patrol : MonoBehaviour
    
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);    
+        transform.position = new Vector3(transform.position.x, transform.position.y, 50f);        
         
-        if(Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f)
+        if (refresh == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
+        }
+
+        if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f || refresh == true)
         {
             if(waitTime <= 0)
             {
                 randomSpot = Random.Range(0, moveSpots.Count); //count was length /// lsit<Transform> was Transform[]
                 waitTime = startWaitTime;
+
+                refresh = false;
             }
             else
             {
                 waitTime -= Time.deltaTime;
             }
         }
+        
+        
     }
 }

@@ -46,6 +46,7 @@ public class DropNDrag : MonoBehaviour
     const string SHOPIDLE = "ShopIdle";
     const string SHOPJIGGLE = "ShopJiggle";
 
+    public GameObject currentClicked;
 
     private void Start()
     {
@@ -103,6 +104,8 @@ public class DropNDrag : MonoBehaviour
 
     public void OnMouseDown()
     {
+        currentClicked = this.gameObject;
+
         if(this.gameObject != shop && this.gameObject != vet)
         {
             if (this.gameObject == food)
@@ -112,7 +115,16 @@ public class DropNDrag : MonoBehaviour
             mouseButtonReleased = false;
             offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;            
-        }                        
+        }
+
+        try
+        {
+            gameObject.GetComponent<Patrol>().refresh = true;
+        }
+        catch
+        {
+            
+        }
     }
     public void OnMouseDrag()
     {
@@ -209,7 +221,7 @@ public class DropNDrag : MonoBehaviour
 
             if (isDead == false && otherDrag.isDead == false)
             {
-                if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName)
+                if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName && this.gameObject == currentClicked)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
