@@ -28,6 +28,7 @@ TagManager:
   - POP
   - Canv
   - Cross
+  - Info
   layers:
   - Default
   - TransparentFX

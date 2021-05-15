@@ -55,8 +55,11 @@ public class ButtonScript : MonoBehaviour
 
     public GameObject popUpHolder;
     public PopUpSys popUpScript;
-    
+
     //update. if false > if current cats >= 2 debug.Log replace for set value in other script > set can merge true
+
+    public GameObject infoHolder;
+    public InfoMenu infoMenu;
 
     public void Start()
     {
@@ -86,6 +89,9 @@ public class ButtonScript : MonoBehaviour
         popUpHolder = GameObject.FindGameObjectWithTag("Manager");
         popUpScript = popUpHolder.GetComponent<PopUpSys>();
 
+        infoHolder = GameObject.FindGameObjectWithTag("Info");
+        infoMenu = infoHolder.GetComponent<InfoMenu>();
+
     }
 
     public void Update()
@@ -93,12 +99,7 @@ public class ButtonScript : MonoBehaviour
         sliderPos = resetPos;
 
         SetFill(currentVal);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeAnimationState(BUTTONPOP);
-        }
-
+           
         if (ifAuto == true)
         {
             currentVal += currentFPS * Time.deltaTime;
@@ -155,6 +156,11 @@ public class ButtonScript : MonoBehaviour
 
     public void SpawnObject()
     {
+        if (infoMenu.infoCat1 == false)
+        {
+            infoMenu.infoCat1 = true;
+        }
+
         Vector3 pos = centre + new Vector3(Random.Range(-2.5f, 3.25f), Random.Range(-size.y / 2, size.y / 2), 50);
         if (currentCats < maxCats)
         {

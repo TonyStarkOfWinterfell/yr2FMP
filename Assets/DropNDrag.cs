@@ -48,6 +48,9 @@ public class DropNDrag : MonoBehaviour
 
     public GameObject currentClicked;
 
+    public GameObject infoHolder;
+    public InfoMenu infoMenu;
+
     private void Start()
     {
         if (gameObject.tag == "VetShop" || gameObject.tag == "PetShop")
@@ -78,6 +81,9 @@ public class DropNDrag : MonoBehaviour
         shopBell = Resources.Load<AudioClip>("hoverShop");
         shopSource = shopHolder.GetComponent<AudioSource>();
 
+        infoHolder = GameObject.FindGameObjectWithTag("Info");
+        infoMenu = infoHolder.GetComponent<InfoMenu>();
+
         isDead = false;
 
         if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
@@ -85,8 +91,21 @@ public class DropNDrag : MonoBehaviour
             healthBar = transform.Find("HealthBar").gameObject;
             healthBar.SetActive(false);
         }
+
+        
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            infoMenu.infoCat6 = true;
+        }
+    }
     public void OnMouseOver()
     {
         if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
@@ -227,6 +246,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("2_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat2 == false)
+                    {
+                        infoMenu.infoCat2 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
                 }
@@ -236,6 +261,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("3_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat3 == false)
+                    {
+                        infoMenu.infoCat3 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
@@ -246,6 +277,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("4_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat4 == false)
+                    {
+                        infoMenu.infoCat4 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
@@ -256,6 +293,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("5_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat5 == false)
+                    {
+                        infoMenu.infoCat5 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
@@ -266,6 +309,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("6_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat6 == false)
+                    {
+                        infoMenu.infoCat6 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
@@ -276,6 +325,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("7_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat7 == false)
+                    {
+                        infoMenu.infoCat7 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
@@ -286,6 +341,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("8_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat8 == false)
+                    {
+                        infoMenu.infoCat8 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
@@ -296,6 +357,12 @@ public class DropNDrag : MonoBehaviour
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
                     Instantiate(Resources.Load("9_Object"), transform.position, Quaternion.identity);
                     mouseButtonReleased = false;
+
+                    if (infoMenu.infoCat9 == false)
+                    {
+                        infoMenu.infoCat9 = true;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
 
