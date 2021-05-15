@@ -95,17 +95,6 @@ public class DropNDrag : MonoBehaviour
         
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            infoMenu.infoCat6 = true;
-        }
-    }
     public void OnMouseOver()
     {
         if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
