@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: -9020477889199125930}
   - component: {fileID: 7727026180309484404}
   - component: {fileID: 4018645483013272200}
+  - component: {fileID: 1949431329943945636}
   m_Layer: 0
   m_Name: 1_Object
   m_TagString: K1
@@ -496,6 +497,8 @@ MonoBehaviour:
   shopSprite: {fileID: 0}
   shopAnim: {fileID: 0}
   currentClicked: {fileID: 0}
+  infoHolder: {fileID: 0}
+  infoMenu: {fileID: 0}
 --- !u!114 &-9020477889199125930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +560,18 @@ MonoBehaviour:
   startWaitTime: 0
   moveSpots: []
   refresh: 0
+--- !u!114 &1949431329943945636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936384936738212844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc97b787546ec8b47a1596a3028bfcc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4706428405050229407
 GameObject:
   m_ObjectHideFlags: 0

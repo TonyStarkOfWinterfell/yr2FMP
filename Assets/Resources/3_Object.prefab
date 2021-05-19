@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 353744873461919714}
   - component: {fileID: 5512985517504109241}
   - component: {fileID: 7096647370749234959}
+  - component: {fileID: 1037553119170496673}
   m_Layer: 0
   m_Name: 3_Object
   m_TagString: K3
@@ -314,7 +315,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.016477048, y: 0.07447636}
   m_SpriteTilingProperty:
@@ -382,6 +383,8 @@ MonoBehaviour:
   shopSprite: {fileID: 0}
   shopAnim: {fileID: 0}
   currentClicked: {fileID: 0}
+  infoHolder: {fileID: 0}
+  infoMenu: {fileID: 0}
 --- !u!114 &353744873461919714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +446,18 @@ MonoBehaviour:
   startWaitTime: 0
   moveSpots: []
   refresh: 0
+--- !u!114 &1037553119170496673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7113829361039062479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc97b787546ec8b47a1596a3028bfcc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7368805622302605232
 GameObject:
   m_ObjectHideFlags: 0
