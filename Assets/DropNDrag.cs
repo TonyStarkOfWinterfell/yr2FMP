@@ -51,6 +51,8 @@ public class DropNDrag : MonoBehaviour
     public GameObject infoHolder;
     public InfoMenu infoMenu;
 
+    private bool fix = false;
+
     private void Start()
     {
         if (gameObject.tag == "VetShop" || gameObject.tag == "PetShop")
@@ -107,7 +109,7 @@ public class DropNDrag : MonoBehaviour
         if (gameObject.tag != "VetShop" && gameObject.tag != "PetShop" && gameObject.tag != "Food")
         {
             healthBar.SetActive(false);
-        }        
+        }               
     }
 
     public void OnMouseDown()
@@ -128,10 +130,11 @@ public class DropNDrag : MonoBehaviour
         try
         {
             gameObject.GetComponent<Patrol>().refresh = true;
+            gameObject.GetComponent<DropNDrag>().fix = true;
         }
         catch
         {
-            
+
         }
     }
     public void OnMouseDrag()
@@ -229,7 +232,7 @@ public class DropNDrag : MonoBehaviour
 
             if (isDead == false && otherDrag.isDead == false)
             {
-                if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName && this.gameObject == currentClicked)
+                if (mouseButtonReleased && thisGameobjectName == "1" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -244,7 +247,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "2" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -260,7 +263,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "3" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -276,7 +279,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "4" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "4" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -292,7 +295,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "5" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "5" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -308,7 +311,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "6" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "6" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -324,7 +327,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "7" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "7" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -340,7 +343,7 @@ public class DropNDrag : MonoBehaviour
                     Destroy(gameObject);
 
                 }
-                else if (mouseButtonReleased && thisGameobjectName == "8" && thisGameobjectName == collisionGameobjectName)
+                else if (mouseButtonReleased && thisGameobjectName == "8" && thisGameobjectName == collisionGameobjectName && gameObject.GetComponent<DropNDrag>().fix == true)
                 {
                     buttonScript.currentCats--;
                     buttonScript.buttonText.text = buttonScript.currentCats + "/" + buttonScript.maxCats;
@@ -553,6 +556,15 @@ public class DropNDrag : MonoBehaviour
         if (gameObject.transform.position.x < -2.85f)
         {
             gameObject.transform.position = new Vector3(-2.5f, gameObject.transform.position.y, 0);
+        }
+
+        try
+        {
+            gameObject.GetComponent<DropNDrag>().fix = false;
+        }
+        catch
+        {
+
         }
     }
 
