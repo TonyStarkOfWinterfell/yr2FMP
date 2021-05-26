@@ -25,6 +25,12 @@ public class Money : MonoBehaviour
    
     void Update()
     {        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            coins += 100000;
+            UpdateCoins();
+        }
+
         if (moneyCheck == false)
         {
             if (coins >= 15)
