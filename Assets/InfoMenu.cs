@@ -184,12 +184,12 @@ public class InfoMenu : MonoBehaviour
        
         else 
         {
-            sprite.color = new Color(0f, 0f, 0f, 1f);
+            /*sprite.color = new Color(0f, 0f, 0f, 1f);
             level.text = "??";
             cps.text = "???";
             sell.text = "????";
 
-            Debug.Log("spooky else");
+            Debug.Log("spooky else");*/
         }
     }
 
